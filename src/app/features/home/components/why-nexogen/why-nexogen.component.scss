@@ -216,10 +216,10 @@
 }
 
 .item-body {
-  padding-left: 3.25rem;
+  padding-inline-start: 3.25rem;
 
   @media (max-width: 640px) {
-    padding-left: 0;
+    padding-inline-start: 0;
     margin-top: 0.5rem;
   }
 }

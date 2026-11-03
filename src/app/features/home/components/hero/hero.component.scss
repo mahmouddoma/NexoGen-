@@ -144,7 +144,7 @@
   }
 
   @media (max-width: 768px) {
-    font-size: clamp(2rem, 8.5vw, 3.25rem);
+    font-size: clamp(1.75rem, 8.5vw, 3.25rem);
   }
 }
 
@@ -295,7 +295,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(300px, 35vw, 460px);
+  width: clamp(240px, 80vw, 460px);
+  max-width: 100%;
   height: auto;
   max-height: 420px;
   object-fit: contain;
@@ -335,6 +336,11 @@
   @media (max-width: 768px) {
     padding: 1.75rem 2.25rem;
     border-radius: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.25rem 1.5rem;
+    border-radius: 16px;
   }
 }
 

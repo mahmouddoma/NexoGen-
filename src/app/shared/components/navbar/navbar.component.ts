@@ -108,7 +108,9 @@ export class NavbarComponent implements OnDestroy {
 
       const targetEl = document.getElementById(sectionId);
       if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth' });
+        const navHeight = window.innerWidth <= 768 ? 68 : 80;
+        const targetY = targetEl.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - navHeight;
+        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
         this.activeSection.set(sectionId);
       }
     }

@@ -74,7 +74,7 @@
 .card-intro-badge {
   position: absolute;
   top: 1rem;
-  left: 1rem;
+  inset-inline-start: 1rem;
   z-index: 2;
   display: inline-flex;
   align-items: center;
@@ -170,7 +170,7 @@
   color: #7d93a7;
   &::before {
     content: "·";
-    margin-right: 0.5rem;
+    margin-inline: 0.5rem;
   }
 }
 

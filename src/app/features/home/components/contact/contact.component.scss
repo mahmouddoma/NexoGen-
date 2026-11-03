@@ -484,6 +484,10 @@
 }
 
 :host-context([dir="rtl"]) {
+  .channel-card.channel-link:hover {
+    transform: translateX(-4px);
+  }
+
   .submit-btn {
     .btn-arrow {
       transform: scaleX(-1);

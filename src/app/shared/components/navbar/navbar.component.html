@@ -128,5 +128,14 @@
     </div>
   </div>
 
+  <!-- Mobile Backdrop Overlay -->
+  @if (isMobileMenuOpen()) {
+    <div 
+      class="mobile-drawer-backdrop" 
+      (click)="closeMobileMenu()" 
+      aria-hidden="true">
+    </div>
+  }
+
 </header>
 

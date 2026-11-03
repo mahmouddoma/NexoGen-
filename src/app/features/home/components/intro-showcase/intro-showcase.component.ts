@@ -87,6 +87,26 @@ export class IntroShowcaseComponent implements OnDestroy {
 
     afterNextRender(() => {
       if (isPlatformBrowser(this.platformId)) {
+        const hash = window.location.hash;
+        if (hash && hash !== '#home' && hash !== '#hero') {
+          // If the user navigates directly to a sub-section anchor (e.g., #products),
+          // instantly settle intro elements to prevent half-animated pinned entrapment
+          this.setupReducedMotionState();
+          this.isInitialized = true;
+          this.introCompleted.emit();
+
+          setTimeout(() => {
+            const cleanId = hash.replace(/^#+/, '');
+            const target = document.getElementById(cleanId);
+            if (target) {
+              const navHeight = window.innerWidth <= 768 ? 68 : 80;
+              const targetY = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - navHeight;
+              window.scrollTo({ top: targetY, behavior: 'auto' });
+            }
+          }, 60);
+          return;
+        }
+
         this.initializeAnimations();
         this.isInitialized = true;
       }

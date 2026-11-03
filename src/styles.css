@@ -126,13 +126,17 @@ app-root {
 #why-nexogen,
 #contact {
   scroll-margin-top: 80px;
+
+  @media (max-width: 768px) {
+    scroll-margin-top: 68px;
+  }
 }
 
 /* Accessible Skip to Content Link */
 .skip-to-content {
   position: absolute;
   top: -120px;
-  left: 1.5rem;
+  inset-inline-start: 1.5rem;
   z-index: 10000;
   padding: 0.75rem 1.5rem;
   background-color: var(--nexo-navy);

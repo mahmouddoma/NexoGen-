@@ -207,8 +207,8 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: none;
   background: transparent;
@@ -251,19 +251,43 @@
 }
 
 // -----------------------------------------------------------------------------
-// Mobile Navigation Drawer
+// Mobile Navigation Drawer & Backdrop
 // -----------------------------------------------------------------------------
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  top: 80px;
+  background-color: rgba(18, 48, 82, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  animation: backdropFadeIn 0.25s ease forwards;
+
+  @media (max-width: 768px) {
+    top: 68px;
+  }
+
+  @media (min-width: 961px) {
+    display: none !important;
+  }
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .mobile-nav-drawer {
   position: fixed;
   top: 80px;
   left: 0;
   right: 0;
-  height: calc(100vh - 80px);
+  height: calc(100dvh - 80px);
   background-color: #ffffff;
   z-index: 999;
   display: flex;
   flex-direction: column;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px));
   box-sizing: border-box;
   opacity: 0;
   visibility: hidden;
@@ -274,7 +298,7 @@
 
   @media (max-width: 768px) {
     top: 68px;
-    height: calc(100vh - 68px);
+    height: calc(100dvh - 68px);
   }
 
   &--open {
