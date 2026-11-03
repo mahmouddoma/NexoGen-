@@ -1,0 +1,119 @@
+<section 
+  class="about-section" 
+  #aboutSection 
+  id="about" 
+  aria-label="About NexoGen Pharma">
+
+  <div class="about-container" #aboutContainer>
+    
+    <!-- Top Editorial Header Area -->
+    <header class="about-header" #aboutHeader>
+      <div class="eyebrow-wrapper" #aboutEyebrow>
+        <span class="eyebrow-index">{{ 'ABOUT.EYEBROW_INDEX' | translate }}</span>
+        <span class="eyebrow-sep">/</span>
+        <span class="eyebrow-text">{{ 'ABOUT.EYEBROW_TEXT' | translate }}</span>
+      </div>
+
+      <h2 class="about-heading" #aboutHeading>
+        <span class="heading-line">{{ 'ABOUT.HEADLINE_LINE1' | translate }}</span>
+        <span class="heading-line">{{ 'ABOUT.HEADLINE_LINE2_PREFIX' | translate }} <span class="highlight">{{ 'ABOUT.HEADLINE_LINE2_HIGHLIGHT' | translate }}</span></span>
+      </h2>
+    </header>
+
+    <!-- Main Asymmetrical Two-Column Content -->
+    <div class="about-grid">
+      
+      <!-- Left Column: Editorial Visual Composition -->
+      <div class="about-visual-column" #aboutVisual>
+        <div class="visual-canvas">
+          <div class="visual-frame">
+            <img 
+              src="assets/products/nexogen-collection.png" 
+              alt="NexoGen Pharma comprehensive pharmaceutical product collection" 
+              class="visual-img"
+              width="1774"
+              height="887"
+              loading="lazy"
+            />
+            <div class="canvas-ambient-shadow" aria-hidden="true"></div>
+          </div>
+
+          <div class="visual-caption-card">
+            <div class="caption-emblem" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--nexo-teal)" stroke-width="2">
+                <circle cx="12" cy="12" r="9" stroke="var(--nexo-teal)" stroke-width="1.5"/>
+                <path d="M12 7v10M7 12h10" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="caption-content">
+              <span class="caption-title">{{ 'ABOUT.CAPTION_TITLE' | translate }}</span>
+              <span class="caption-sub">{{ 'ABOUT.CAPTION_SUB' | translate }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Structured Brand Introduction -->
+      <div class="about-text-column" #aboutText>
+        <div class="text-block text-block--lead">
+          <p class="lead-paragraph">
+            {{ 'ABOUT.LEAD' | translate }}
+          </p>
+        </div>
+
+        <div class="text-block text-block--body">
+          <p>
+            {{ 'ABOUT.P1' | translate }}
+          </p>
+          <p>
+            {{ 'ABOUT.P2' | translate }}
+          </p>
+        </div>
+
+        <!-- Brand Focus Pillars -->
+        <div class="positioning-pillars">
+          <div class="pillar-item">
+            <span class="pillar-marker"></span>
+            <div class="pillar-info">
+              <span class="pillar-name">{{ 'ABOUT.PILLARS.P1_TITLE' | translate }}</span>
+              <span class="pillar-desc">{{ 'ABOUT.PILLARS.P1_DESC' | translate }}</span>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <span class="pillar-marker"></span>
+            <div class="pillar-info">
+              <span class="pillar-name">{{ 'ABOUT.PILLARS.P2_TITLE' | translate }}</span>
+              <span class="pillar-desc">{{ 'ABOUT.PILLARS.P2_DESC' | translate }}</span>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <span class="pillar-marker"></span>
+            <div class="pillar-info">
+              <span class="pillar-name">{{ 'ABOUT.PILLARS.P3_TITLE' | translate }}</span>
+              <span class="pillar-desc">{{ 'ABOUT.PILLARS.P3_DESC' | translate }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action / CTA to Products -->
+        <div class="about-actions" #aboutActions>
+          <a 
+            href="#products" 
+            class="about-cta-btn" 
+            (click)="onExploreProducts($event)"
+            [attr.aria-label]="'ABOUT.CTA_PORTFOLIO' | translate">
+            <span class="btn-text">{{ 'ABOUT.CTA_PORTFOLIO' | translate }}</span>
+            <svg class="btn-icon" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+

@@ -1,0 +1,216 @@
+<section 
+  class="products-section" 
+  #showcaseSection 
+  id="products"
+  aria-label="NexoGen Pharmaceutical Products Collection">
+
+  <div class="products-container" #showcaseContainer>
+    
+    <!-- Section Editorial Header -->
+    <header class="section-header" #sectionHeader>
+      <div class="eyebrow-badge" #sectionEyebrow>
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span class="eyebrow-text">{{ 'PRODUCTS.EYEBROW' | translate }}</span>
+      </div>
+
+      <h2 class="section-heading" #sectionHeading>
+        {{ 'PRODUCTS.TITLE_PREFIX' | translate }} <span class="highlight">{{ 'PRODUCTS.TITLE_HIGHLIGHT' | translate }}</span>
+      </h2>
+
+      <p class="section-lead" #sectionLead>
+        {{ 'PRODUCTS.LEAD' | translate }}
+      </p>
+
+      <!-- Category Filter Pills -->
+      <nav class="category-filters" #categoryFiltersNav aria-label="Filter products by therapeutic category">
+        @for (category of categories(); track category) {
+          <button 
+            type="button" 
+            class="filter-pill"
+            [class.filter-pill--active]="selectedCategory() === category"
+            [attr.aria-pressed]="selectedCategory() === category"
+            (click)="selectCategory(category)">
+            <span class="pill-title">{{ getCategoryKey(category) | translate }}</span>
+            <span class="pill-count">{{ getCategoryCount(category) }}</span>
+          </button>
+        }
+      </nav>
+    </header>
+
+    <!-- 3D Product Spotlight Showroom Layout -->
+    <div class="spotlight-showroom">
+      
+      <!-- Left Column: Product Dossier Information & Interactive Controls -->
+      <div class="spotlight-dossier" #spotlightDossier aria-live="polite">
+        
+        <!-- Live Counter & Collection Index -->
+        <div class="dossier-index-badge dossier-anim">
+          <span class="index-label">{{ 'PRODUCTS.EYEBROW' | translate }}</span>
+          <span class="index-sep">/</span>
+          <span class="index-counter">{{ formattedCounter() }}</span>
+        </div>
+
+        <!-- Product Category with Subtle Accent Pill -->
+        <div class="dossier-category-wrapper dossier-anim">
+          <span 
+            class="dossier-accent-dot" 
+            [style.background-color]="activeProduct().accentColor || 'var(--nexo-teal)'"
+            aria-hidden="true">
+          </span>
+          <span 
+            class="dossier-category" 
+            [style.color]="activeProduct().accentColor || 'var(--nexo-teal)'">
+            {{ ('CATALOG.' + activeProduct().id + '.category') | translate }}
+          </span>
+        </div>
+
+        <!-- Large Product Editorial Title -->
+        <h3 class="dossier-title dossier-anim u-ltr" dir="ltr">
+          {{ activeProduct().name }}
+        </h3>
+
+        <!-- Subtitle / Formulation Specification -->
+        <p class="dossier-subtitle dossier-anim">
+          {{ activeProduct().subtitle ? (('CATALOG.' + activeProduct().id + '.subtitle') | translate) : '' }}
+        </p>
+
+        <!-- Verified Product Description -->
+        <p class="dossier-description dossier-anim">
+          {{ ('CATALOG.' + activeProduct().id + '.shortDescription') | translate }}
+        </p>
+
+        <!-- Product Formulation Specifications Matrix -->
+        <div class="dossier-specs-matrix dossier-anim">
+          <div class="spec-cell">
+            <span class="spec-label">{{ 'PRODUCTS.LABEL_PACKAGING' | translate }}</span>
+            <span class="spec-value">{{ ('CATALOG.' + activeProduct().id + '.packaging') | translate }}</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">{{ 'PRODUCTS.LABEL_THERAPEUTIC' | translate }}</span>
+            <span class="spec-value">{{ ('CATALOG.' + activeProduct().id + '.category') | translate }}</span>
+          </div>
+        </div>
+
+        <!-- Primary Action CTA -->
+        <div class="dossier-actions dossier-anim">
+          <a 
+            [routerLink]="['/products', activeProduct().slug]"
+            class="spotlight-cta-btn"
+            [attr.aria-label]="'Explore details for ' + activeProduct().name">
+            <span class="btn-text">{{ 'PRODUCTS.BTN_EXPLORE' | translate }}</span>
+            <svg class="btn-arrow" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Carousel Interactive Controls: Buttons & Indicators -->
+        <div class="carousel-controls-bar">
+          <div class="controls-arrows">
+            <button 
+              type="button" 
+              class="carousel-nav-btn prev-btn" 
+              (click)="previousProduct()" 
+              [disabled]="isTransitioning() || totalCount() <= 1"
+              aria-label="Previous pharmaceutical product">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <button 
+              type="button" 
+              class="carousel-nav-btn next-btn" 
+              (click)="nextProduct()" 
+              [disabled]="isTransitioning() || totalCount() <= 1"
+              aria-label="Next pharmaceutical product">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Product Track Indicator Dots -->
+          <div class="carousel-track-pills" role="tablist" aria-label="Select product">
+            @for (prod of filteredProducts(); track prod.id; let idx = $index) {
+              <button 
+                type="button" 
+                class="track-pill"
+                [class.track-pill--active]="idx === activeIndex()"
+                [attr.aria-selected]="idx === activeIndex()"
+                [attr.aria-label]="'Go to product ' + ($index + 1) + ': ' + prod.name"
+                (click)="goToProduct(idx)">
+              </button>
+            }
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Dedicated 3D Product Spotlight Stage -->
+      <div 
+        class="spotlight-stage" 
+        #spotlightStage
+        tabindex="0"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="NexoGen 3D Product Stage"
+        (keydown)="onKeydown($event)"
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event)">
+
+        <!-- Ground Ambient Pedestal Shadow -->
+        <div class="stage-ground-pedestal" aria-hidden="true"></div>
+
+        <!-- 3D Stage Perspective Canvas -->
+        <div class="stage-perspective">
+          @for (prod of filteredProducts(); track prod.id; let idx = $index) {
+            <article 
+              class="spotlight-card"
+              [class.spotlight-card--active]="idx === activeIndex()"
+              [class.spotlight-card--prev]="idx === prevIndex()"
+              [class.spotlight-card--next]="idx === nextIndex()"
+              [attr.data-product-id]="prod.id"
+              [attr.aria-hidden]="idx !== activeIndex()"
+              (click)="onSlideCardClick(idx)"
+              #slideCard>
+
+              <!-- Authentic Product Packaging Image Frame -->
+              <div class="card-visual-frame">
+                <img 
+                  [src]="prod.image" 
+                  [alt]="prod.alt || prod.name" 
+                  class="spotlight-img"
+                  [class]="'spotlight-img--' + prod.id"
+                  [attr.width]="prod.width"
+                  [attr.height]="prod.height"
+                  draggable="false"
+                  loading="eager"
+                />
+                <div class="product-contact-shadow" aria-hidden="true"></div>
+              </div>
+
+              <!-- Product Floating Name Plaque -->
+              <div class="card-plaque" [class.card-plaque--visible]="idx === activeIndex()">
+                <span 
+                  class="plaque-dot" 
+                  [style.background-color]="prod.accentColor || 'var(--nexo-teal)'" 
+                  aria-hidden="true">
+                </span>
+                <span class="plaque-name u-ltr" dir="ltr">{{ prod.name }}</span>
+              </div>
+
+            </article>
+          }
+        </div>
+
+        <!-- Background Stage Depth Atmosphere -->
+        <div class="stage-ambient-lens" aria-hidden="true"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

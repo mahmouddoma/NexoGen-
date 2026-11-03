@@ -1,0 +1,437 @@
+// =============================================================================
+// NexoGen Pharma — Hero Component Styles
+// Premium Typography-Driven Editorial Brand Hero | Asymmetric Architectural Layout
+// =============================================================================
+
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+  background-color: transparent;
+  color: var(--nexo-text, #172b3a);
+  font-family: var(--nexo-font-sans, system-ui, sans-serif);
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 88vh;
+  min-height: 88svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2.5rem 3.5rem 2.5rem;
+  box-sizing: border-box;
+  background: transparent;
+
+  @media (max-width: 1024px) {
+    padding: 4.5rem 2rem 3rem 2rem;
+    min-height: auto;
+  }
+
+  @media (max-width: 768px) {
+    padding: 3.5rem 1.25rem 2.5rem 1.25rem;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Main Hero Container
+// -----------------------------------------------------------------------------
+.hero-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 75vh;
+  min-height: 75svh;
+}
+
+// -----------------------------------------------------------------------------
+// Editorial Asymmetric Two-Column Grid
+// Natural document flow:
+// LTR (EN): Content on LEFT (col 1), Visual on RIGHT (col 2)
+// RTL (AR): Content on RIGHT (col 1), Visual on LEFT (col 2)
+// -----------------------------------------------------------------------------
+.hero-editorial-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+  width: 100%;
+  margin-block: auto;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 2.25rem;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Column 1: Main Content Area
+// -----------------------------------------------------------------------------
+.hero-content-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+
+  :host-context([dir="rtl"]) & {
+    align-items: flex-start;
+    text-align: right;
+  }
+}
+
+// Brand Eyebrow
+.hero-eyebrow-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--nexo-teal, #009f9c);
+  box-shadow: 0 0 0 3px rgba(0, 159, 156, 0.18);
+  flex-shrink: 0;
+}
+
+.hero-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  color: var(--nexo-teal, #009f9c);
+  text-transform: uppercase;
+}
+
+// Main Heading (Very Large, Bold Typography)
+.hero-headline {
+  margin: 0 0 1.5rem 0;
+  font-size: clamp(2.5rem, 5.2vw, 4.85rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  :host-context([dir="rtl"]) & {
+    letter-spacing: 0;
+    line-height: 1.2;
+    font-family: 'Alexandria', 'IBM Plex Sans Arabic', 'Cairo', system-ui, sans-serif;
+  }
+
+  .headline-line {
+    display: block;
+
+    &--navy {
+      color: var(--nexo-navy, #123052);
+    }
+
+    &--teal {
+      color: var(--nexo-teal, #009f9c);
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: clamp(2rem, 8.5vw, 3.25rem);
+  }
+}
+
+// Supporting Editorial Description
+.hero-description {
+  margin: 0 0 2.25rem 0;
+  font-size: clamp(1.05rem, 1.2vw, 1.22rem);
+  line-height: 1.68;
+  color: #4a6176;
+  max-width: 580px;
+  font-weight: 450;
+
+  @media (max-width: 768px) {
+    font-size: 0.96875rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+}
+
+// CTA Actions
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+    width: 100%;
+    gap: 0.875rem;
+  }
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .btn-arrow {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(0, 159, 156, 0.35);
+  }
+
+  // Primary Button: Dark Navy
+  &--primary {
+    background-color: var(--nexo-navy, #123052);
+    color: #ffffff;
+    border: 1.5px solid var(--nexo-navy, #123052);
+    box-shadow: 0 4px 14px rgba(18, 48, 82, 0.12);
+
+    &:hover {
+      background-color: var(--nexo-teal, #009f9c);
+      border-color: var(--nexo-teal, #009f9c);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 159, 156, 0.22);
+
+      .btn-arrow {
+        transform: translateX(4px);
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // Secondary Button: Crisp Minimalist Outline
+  &--secondary {
+    background-color: #ffffff;
+    color: var(--nexo-navy, #123052);
+    border: 1.5px solid rgba(18, 48, 82, 0.16);
+    box-shadow: 0 2px 6px rgba(18, 48, 82, 0.03);
+
+    &:hover {
+      background-color: #f8fafc;
+      border-color: var(--nexo-navy, #123052);
+      color: var(--nexo-navy, #123052);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(18, 48, 82, 0.08);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+  }
+}
+
+// Directional Arrow Handling for RTL
+:host-context([dir="rtl"]) {
+  .hero-btn--primary {
+    .btn-arrow {
+      transform: scaleX(-1);
+    }
+
+    &:hover .btn-arrow {
+      transform: scaleX(-1) translateX(4px);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Column 2: Brand Visual Area (Monogram & Official Emblem Plinth)
+// -----------------------------------------------------------------------------
+.hero-visual-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.brand-visual-stage {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+
+  @media (max-width: 1024px) {
+    padding: 2rem 1rem;
+    max-width: 380px;
+  }
+}
+
+// Oversized Architectural Low-Opacity NG Watermark Monogram
+.visual-monogram-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(300px, 35vw, 460px);
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+  // Strictly prevent mirroring of official monogram
+  direction: ltr !important;
+}
+
+// Official NexoGen Pharma Emblem Card Plinth
+.visual-emblem-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.emblem-surface {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 2.25rem 2.85rem;
+  box-shadow: 0 24px 52px -16px rgba(18, 48, 82, 0.08),
+              0 2px 6px rgba(18, 48, 82, 0.03);
+  border: 1px solid rgba(18, 48, 82, 0.07);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 32px 68px -18px rgba(0, 159, 156, 0.16);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.75rem 2.25rem;
+    border-radius: 20px;
+  }
+}
+
+.visual-emblem-logo {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  // Strictly prevent mirroring of official logo
+  direction: ltr !important;
+
+  @media (max-width: 768px) {
+    max-width: 180px;
+  }
+}
+
+.emblem-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  background-color: rgba(0, 159, 156, 0.06);
+  border: 1px solid rgba(0, 159, 156, 0.15);
+}
+
+.tagline-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--nexo-teal, #009f9c);
+  flex-shrink: 0;
+}
+
+.tagline-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--nexo-teal, #009f9c);
+  text-transform: uppercase;
+}
+
+// -----------------------------------------------------------------------------
+// Bottom Brand Category Strip
+// Minimal, transparent, teal accents, restrained spacing
+// -----------------------------------------------------------------------------
+.hero-category-strip {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.75rem;
+  padding-top: 2.75rem;
+  border-top: 1px solid rgba(18, 48, 82, 0.07);
+  width: 100%;
+  margin-top: 2.5rem;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    padding-top: 1.75rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.category-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.category-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--nexo-teal, #009f9c);
+  flex-shrink: 0;
+}
+
+.category-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--nexo-navy, #123052);
+  text-transform: uppercase;
+
+  :host-context([dir="rtl"]) & {
+    letter-spacing: 0;
+  }
+}
+
+.category-separator {
+  width: 1px;
+  height: 16px;
+  background-color: rgba(18, 48, 82, 0.12);
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}

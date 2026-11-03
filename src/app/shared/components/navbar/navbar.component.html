@@ -1,0 +1,132 @@
+<header 
+  class="nexo-navbar" 
+  [class.nexo-navbar--scrolled]="isScrolled()" 
+  [class.nexo-navbar--menu-open]="isMobileMenuOpen()"
+  aria-label="Main Site Navigation">
+
+  <div class="navbar-container">
+    
+    <!-- Brand Logo Lockup -->
+    <a 
+      routerLink="/" 
+      fragment="home" 
+      (click)="onNavClick('home', $event)" 
+      class="navbar-brand" 
+      aria-label="NexoGen Pharma Homepage">
+      <div class="brand-logo-wrapper">
+        <img 
+          src="assets/branding/nexogen-logo.png" 
+          alt="NexoGen Pharma" 
+          class="navbar-logo-img" 
+          width="61" 
+          height="52"
+          fetchpriority="high"
+        />
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav" aria-label="Desktop Primary Navigation">
+      <ul class="nav-links">
+        @for (item of navItems; track item.id) {
+          <li class="nav-item">
+            <a 
+              routerLink="/" 
+              [fragment]="item.id"
+              class="nav-link"
+              [class.nav-link--active]="activeSection() === item.id"
+              [attr.aria-current]="activeSection() === item.id ? 'page' : null"
+              (click)="onNavClick(item.id, $event)">
+              <span>{{ item.key | translate }}</span>
+              <span class="active-indicator" aria-hidden="true"></span>
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Desktop Right Action -->
+    <div class="navbar-actions">
+      <app-language-switcher />
+
+      <a 
+        routerLink="/" 
+        fragment="contact" 
+        (click)="onNavClick('contact', $event)" 
+        class="nav-cta-btn"
+        [attr.aria-label]="'NAV.GET_IN_TOUCH' | translate">
+        <span>{{ 'NAV.GET_IN_TOUCH' | translate }}</span>
+        <svg class="cta-arrow" viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <!-- Mobile Hamburger Menu Button -->
+      <button 
+        type="button" 
+        class="mobile-menu-toggle"
+        (click)="toggleMobileMenu()" 
+        [attr.aria-expanded]="isMobileMenuOpen()" 
+        aria-controls="mobile-nav-drawer"
+        [attr.aria-label]="isMobileMenuOpen() ? ('NAV.CLOSE_NAV_MENU' | translate) : ('NAV.OPEN_NAV_MENU' | translate)">
+        <span class="hamburger-bar" aria-hidden="true"></span>
+        <span class="hamburger-bar" aria-hidden="true"></span>
+        <span class="hamburger-bar" aria-hidden="true"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div 
+    id="mobile-nav-drawer" 
+    class="mobile-nav-drawer" 
+    [class.mobile-nav-drawer--open]="isMobileMenuOpen()" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-label="Mobile Navigation Drawer">
+    
+    <div class="mobile-drawer-inner">
+      <div class="mobile-drawer-brand">
+        <img 
+          src="assets/branding/nexogen-logo.png" 
+          alt="NexoGen Pharma" 
+          class="mobile-drawer-logo" 
+          width="70" 
+          height="60"
+        />
+        <app-language-switcher />
+      </div>
+      <ul class="mobile-nav-list">
+        @for (item of navItems; track item.id) {
+          <li class="mobile-nav-item">
+            <a 
+              routerLink="/" 
+              [fragment]="item.id"
+              class="mobile-nav-link"
+              [class.mobile-nav-link--active]="activeSection() === item.id"
+              (click)="onNavClick(item.id, $event)">
+              <span class="item-number">0{{ $index + 1 }}</span>
+              <span class="item-name">{{ item.key | translate }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+
+      <div class="mobile-drawer-footer">
+        <a 
+          routerLink="/" 
+          fragment="contact" 
+          (click)="onNavClick('contact', $event)" 
+          class="mobile-contact-btn">
+          <span>{{ 'NAV.MOBILE_START_CONVERSATION' | translate }}</span>
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</header>
+

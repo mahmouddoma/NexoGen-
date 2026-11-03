@@ -1,0 +1,510 @@
+// =============================================================================
+// NexoGen Pharma — Contact Component Styles
+// Editorial Clinical Communication | Reactive Inquiries Desk
+// =============================================================================
+
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+  background-color: transparent;
+  color: var(--nexo-text, #172b3a);
+  font-family: var(--nexo-font-sans, system-ui, sans-serif);
+}
+
+.contact-section {
+  position: relative;
+  width: 100%;
+  padding: 7rem 2rem 8.5rem 2rem;
+  box-sizing: border-box;
+  background-color: transparent;
+  border-top: 1px solid rgba(18, 48, 82, 0.06);
+
+  @media (max-width: 768px) {
+    padding: 4.5rem 1.25rem 5.5rem 1.25rem;
+  }
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+// -----------------------------------------------------------------------------
+// Asymmetrical Contact Grid
+// -----------------------------------------------------------------------------
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 5rem;
+  align-items: flex-start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Left Column: Brand Communication
+// -----------------------------------------------------------------------------
+.contact-info-column {
+  width: 100%;
+  will-change: transform, opacity;
+}
+
+.eyebrow-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--nexo-teal, #009f9c);
+  box-shadow: 0 0 0 3px rgba(0, 159, 156, 0.18);
+}
+
+.eyebrow-text {
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  color: var(--nexo-teal, #009f9c);
+  text-transform: uppercase;
+}
+
+.contact-heading {
+  margin: 0 0 1.25rem 0;
+  font-size: clamp(2.3rem, 4.2vw, 3.8rem);
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--nexo-navy, #123052);
+
+  .highlight {
+    color: var(--nexo-teal, #009f9c);
+  }
+}
+
+.contact-lead {
+  margin: 0 0 2.5rem 0;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.62;
+  color: #556b7f;
+  max-width: 520px;
+}
+
+// Channels List
+.channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(18, 48, 82, 0.08);
+  border-bottom: 1px solid rgba(18, 48, 82, 0.08);
+  margin-bottom: 2rem;
+}
+
+.channel-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  background-color: transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  color: inherit;
+
+  &.channel-link {
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 159, 156, 0.05);
+      transform: translateX(4px);
+
+      .channel-icon-box {
+        background-color: var(--nexo-teal, #009f9c);
+        color: #ffffff;
+      }
+
+      .channel-val {
+        color: var(--nexo-teal, #009f9c);
+      }
+
+      .external-icon {
+        opacity: 1;
+        transform: translate(2px, -2px);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--nexo-teal, #009f9c);
+      outline-offset: 2px;
+    }
+  }
+}
+
+.channel-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgba(18, 48, 82, 0.05);
+  color: var(--nexo-navy, #123052);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+
+  &--fb {
+    background-color: rgba(24, 119, 242, 0.1);
+    color: #1877f2;
+  }
+}
+
+.channel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex-grow: 1;
+}
+
+.channel-label {
+  font-size: 0.6875rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  color: #627d98;
+  text-transform: uppercase;
+}
+
+.channel-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--nexo-navy, #123052);
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+  word-break: break-all;
+}
+
+.external-icon {
+  color: #627d98;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+// Compliance Notice
+.compliance-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.compliance-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #94a3b8;
+  margin-top: 0.45rem;
+  flex-shrink: 0;
+}
+
+.compliance-text {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #7d93a7;
+}
+
+// -----------------------------------------------------------------------------
+// Right Column: Form Canvas
+// -----------------------------------------------------------------------------
+.contact-form-column {
+  width: 100%;
+  will-change: transform, opacity;
+}
+
+.form-canvas {
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(18, 48, 82, 0.08);
+  padding: 3rem;
+  box-shadow: 0 10px 30px -10px rgba(18, 48, 82, 0.05);
+
+  @media (max-width: 768px) {
+    padding: 1.75rem 1.25rem;
+    border-radius: 16px;
+  }
+}
+
+.nexo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--nexo-navy, #123052);
+
+  .required-star {
+    color: var(--nexo-teal, #009f9c);
+  }
+
+  .optional-tag {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: #94a3b8;
+    margin-left: 0.25rem;
+  }
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(18, 48, 82, 0.12);
+  background-color: #fbfcfc;
+  color: var(--nexo-text, #172b3a);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: #94a3b8;
+    opacity: 0.8;
+  }
+
+  &:hover {
+    border-color: rgba(18, 48, 82, 0.25);
+  }
+
+  &:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: var(--nexo-teal, #009f9c);
+    box-shadow: 0 0 0 3px rgba(0, 159, 156, 0.15);
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.8rem 2.5rem 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(18, 48, 82, 0.12);
+  background-color: #fbfcfc;
+  color: var(--nexo-text, #172b3a);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    border-color: rgba(18, 48, 82, 0.25);
+  }
+
+  &:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: var(--nexo-teal, #009f9c);
+    box-shadow: 0 0 0 3px rgba(0, 159, 156, 0.15);
+  }
+}
+
+.select-chevron {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #64748b;
+}
+
+// Invalid State
+.form-group--invalid {
+  .form-input,
+  .form-select,
+  .form-textarea {
+    border-color: #e53e3e;
+    background-color: #fffafb;
+
+    &:focus {
+      border-color: #e53e3e;
+      box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.14);
+    }
+  }
+}
+
+.form-error {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #e53e3e;
+  line-height: 1.35;
+}
+
+// Submit Button
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.95rem;
+  margin-top: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--nexo-navy, #123052);
+  color: #ffffff;
+  border: 1px solid var(--nexo-navy, #123052);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(18, 48, 82, 0.12);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .btn-arrow {
+    transition: transform 0.25s ease;
+  }
+
+  &:hover:not([disabled]) {
+    background-color: var(--nexo-teal, #009f9c);
+    border-color: var(--nexo-teal, #009f9c);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 159, 156, 0.25);
+
+    .btn-arrow {
+      transform: translateX(4px);
+    }
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(0, 159, 156, 0.35);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.spinner-ring {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Submission Feedback State
+.submission-feedback-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.feedback-emblem {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: rgba(0, 159, 156, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.feedback-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--nexo-navy, #123052);
+  letter-spacing: -0.02em;
+}
+
+.feedback-desc {
+  margin: 0 0 2rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #556b7f;
+  max-width: 440px;
+}
+
+.feedback-reset-btn {
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  background-color: var(--nexo-navy, #123052);
+  color: #ffffff;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--nexo-teal, #009f9c);
+    transform: translateY(-1px);
+  }
+}
+
+:host-context([dir="rtl"]) {
+  .submit-btn {
+    .btn-arrow {
+      transform: scaleX(-1);
+    }
+    &:hover:not(:disabled) .btn-arrow {
+      transform: scaleX(-1) translateX(3px);
+    }
+  }
+
+  .external-icon {
+    transform: scaleX(-1);
+  }
+
+  .form-select {
+    padding-left: 2.5rem;
+    padding-right: 1.15rem;
+  }
+
+  .select-chevron {
+    right: auto;
+    left: 1rem;
+  }
+}
+

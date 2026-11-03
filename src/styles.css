@@ -1,1 +1,168 @@
-/* You can add global styles to this file, and also import other style files */
+/* ==========================================================================
+   NexoGen Pharma — Global Design System & Variables
+   ========================================================================== */
+
+:root {
+  /* Brand Colors */
+  --nexo-navy: #123052;
+  --nexo-navy-deep: #0a1b2e;
+  --nexo-navy-light: #1c4574;
+  --nexo-teal: #009f9c;
+  --nexo-teal-dark: #007a78;
+  --nexo-teal-light: #e0f4f4;
+  --nexo-teal-accent: #00c4b4;
+  --nexo-background: #f6f8f8;
+  --nexo-surface: #ffffff;
+  --nexo-white: #ffffff;
+  --nexo-text: #172b3a;
+  --nexo-muted: #627d98;
+  --nexo-border: rgba(18, 48, 82, 0.08);
+  --nexo-shadow-soft: 0 10px 30px -10px rgba(18, 48, 82, 0.08);
+
+  /* Typography */
+  --nexo-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --nexo-font-arabic: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI Arabic', 'Noto Sans Arabic', Tahoma, sans-serif;
+
+  /* Transitions */
+  --nexo-ease-craft: cubic-bezier(0.16, 1, 0.3, 1);
+  --nexo-transition-snappy: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8fbfb;
+  color: var(--nexo-text);
+  font-family: var(--nexo-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+app-root {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   NexoGen Pharma — Continuous Global Fixed Background
+   ========================================================================== */
+.site-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 0;
+  background-image: url('/assets/branding/nexogen-site-background.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+  overflow: hidden;
+  direction: ltr !important;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+@media (max-width: 1024px) {
+  .site-background {
+    background-position: 60% center;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-background {
+    background-position: 65% center;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-background {
+    background-position: 70% center;
+  }
+}
+
+[dir="rtl"] {
+  --nexo-font-sans: var(--nexo-font-arabic);
+  font-family: var(--nexo-font-arabic);
+}
+
+/* Direction isolation utilities */
+.u-ltr, [dir="ltr"] {
+  direction: ltr !important;
+  unicode-bidi: isolate;
+}
+
+/* Prevent accidental mirroring on brand logos and packaging assets */
+.navbar-logo-img,
+.footer-logo-img,
+.intro-brand-logo,
+.product-img,
+.product-hero-image,
+.related-img,
+.pagination-thumb {
+  direction: ltr !important;
+  unicode-bidi: normal !important;
+}
+
+/* Offset for fixed navbar on smooth scroll navigation */
+#home,
+#hero,
+#products,
+#about,
+#why-nexogen,
+#contact {
+  scroll-margin-top: 80px;
+}
+
+/* Accessible Skip to Content Link */
+.skip-to-content {
+  position: absolute;
+  top: -120px;
+  left: 1.5rem;
+  z-index: 10000;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--nexo-navy);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(18, 48, 82, 0.25);
+  border: 2px solid var(--nexo-teal);
+  transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:focus {
+    top: 1.25rem;
+    outline: none;
+  }
+}
+
+/* Universal accessible focus outline indicator */
+:focus-visible {
+  outline: 2px solid var(--nexo-teal);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

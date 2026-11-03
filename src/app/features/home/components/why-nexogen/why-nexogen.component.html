@@ -1,0 +1,69 @@
+<section 
+  class="why-section" 
+  #whySection 
+  id="why-nexogen" 
+  aria-label="Why NexoGen - Our Approach and Brand Values">
+
+  <div class="why-container" #whyContainer>
+    
+    <div class="why-grid">
+      
+      <!-- Left Column: Sticky Editorial Title Block -->
+      <aside class="why-sticky-column" #whyStickyHeader>
+        <div class="sticky-inner">
+          <div class="eyebrow-wrapper">
+            <span class="eyebrow-index">{{ 'WHY_NEXOGEN.EYEBROW_INDEX' | translate }}</span>
+            <span class="eyebrow-sep">/</span>
+            <span class="eyebrow-text">{{ 'WHY_NEXOGEN.EYEBROW_TEXT' | translate }}</span>
+          </div>
+
+          <h2 class="why-heading">
+            {{ 'WHY_NEXOGEN.HEADLINE_PREFIX' | translate }} <span class="highlight">{{ 'WHY_NEXOGEN.HEADLINE_HIGHLIGHT' | translate }}</span>
+          </h2>
+
+          <p class="why-lead">
+            {{ 'WHY_NEXOGEN.LEAD' | translate }}
+          </p>
+
+          <div class="brand-crest" aria-hidden="true">
+            <span class="crest-number">{{ 'WHY_NEXOGEN.CREST_NUMBER' | translate }}</span>
+            <span class="crest-label">{{ 'WHY_NEXOGEN.CREST_LABEL' | translate }}</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Column: Vertical Values List with Fine Dividers -->
+      <div class="why-values-column" #whyValuesColumn>
+        <ol class="values-list" aria-label="NexoGen Core Principles">
+          @for (val of values(); track val.index; let idx = $index) {
+            <li 
+              class="value-item" 
+              [attr.data-index]="val.index"
+              #valueItem>
+              
+              <div class="item-header">
+                <span class="item-index">{{ val.index }}</span>
+                <h3 class="item-title">{{ val.titleKey | translate }}</h3>
+                <span class="item-indicator" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75">
+                    <path d="M7 10L10 13L13 10M10 4V13" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </div>
+
+              <div class="item-body">
+                <p class="item-description">{{ val.descKey | translate }}</p>
+              </div>
+
+              <div class="item-divider" aria-hidden="true"></div>
+            </li>
+          }
+        </ol>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+

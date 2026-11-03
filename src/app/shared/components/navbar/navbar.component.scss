@@ -1,0 +1,385 @@
+// =============================================================================
+// NexoGen Pharma — Navbar Component Styles
+// Frosted Architectural Header | Mobile Responsive Drawer
+// =============================================================================
+
+:host {
+  display: block;
+}
+
+.nexo-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-bottom: 1px solid transparent;
+
+  &--scrolled {
+    background-color: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: rgba(18, 48, 82, 0.08);
+    box-shadow: 0 4px 20px rgba(18, 48, 82, 0.04);
+  }
+
+  &--menu-open {
+    background-color: #ffffff !important;
+    border-bottom-color: rgba(18, 48, 82, 0.08) !important;
+  }
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  height: 80px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 0 1.25rem;
+    height: 68px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Brand Logo Lockup
+// -----------------------------------------------------------------------------
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+.brand-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .navbar-brand:hover & {
+    transform: scale(1.02);
+  }
+}
+
+.navbar-logo-img {
+  height: 52px;
+  width: auto;
+  max-width: 75px;
+  object-fit: contain;
+  display: block;
+
+  @media (max-width: 768px) {
+    height: 44px;
+    max-width: 62px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Desktop Navigation Links
+// -----------------------------------------------------------------------------
+.desktop-nav {
+  display: block;
+
+  @media (max-width: 960px) {
+    display: none;
+  }
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 650;
+  color: #475569;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .active-indicator {
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--nexo-teal, #009f9c);
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    color: var(--nexo-teal, #009f9c);
+    background-color: rgba(0, 159, 156, 0.06);
+  }
+
+  &--active {
+    color: var(--nexo-navy, #123052);
+    font-weight: 800;
+    background-color: rgba(18, 48, 82, 0.05);
+
+    .active-indicator {
+      transform: translateX(-50%) scale(1);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--nexo-teal, #009f9c);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Navbar Actions (CTA + Mobile Toggle)
+// -----------------------------------------------------------------------------
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.15rem;
+  border-radius: 9999px;
+  background-color: transparent;
+  border: 1px solid rgba(18, 48, 82, 0.16);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--nexo-navy, #123052);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .cta-arrow {
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    background-color: var(--nexo-navy, #123052);
+    border-color: var(--nexo-navy, #123052);
+    color: #ffffff;
+
+    .cta-arrow {
+      transform: translateX(3px);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--nexo-teal, #009f9c);
+  }
+
+  @media (max-width: 960px) {
+    display: none; // Hidden on mobile in favor of burger
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Mobile Menu Hamburger Button
+// -----------------------------------------------------------------------------
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+
+  .hamburger-bar {
+    width: 22px;
+    height: 2px;
+    background-color: var(--nexo-navy, #123052);
+    border-radius: 2px;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+  }
+
+  &:focus-visible {
+    border-radius: 6px;
+    box-shadow: 0 0 0 2px var(--nexo-teal, #009f9c);
+  }
+
+  @media (max-width: 960px) {
+    display: flex;
+  }
+}
+
+// Hamburger Animated 'X' State
+.nexo-navbar--menu-open {
+  .mobile-menu-toggle {
+    .hamburger-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger-bar:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .hamburger-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Mobile Navigation Drawer
+// -----------------------------------------------------------------------------
+.mobile-nav-drawer {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 80px);
+  background-color: #ffffff;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    top: 68px;
+    height: calc(100vh - 68px);
+  }
+
+  &--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  @media (min-width: 961px) {
+    display: none !important;
+  }
+}
+
+.mobile-drawer-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.mobile-drawer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(18, 48, 82, 0.08);
+
+  .mobile-drawer-logo {
+    height: 52px;
+    width: auto;
+    max-width: 72px;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.mobile-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(18, 48, 82, 0.06);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 750;
+  color: var(--nexo-navy, #123052);
+  transition: color 0.2s ease;
+
+  .item-number {
+    font-size: 0.8125rem;
+    font-weight: 850;
+    color: var(--nexo-teal, #009f9c);
+  }
+
+  &--active {
+    color: var(--nexo-teal, #009f9c);
+  }
+}
+
+.mobile-drawer-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+}
+
+.mobile-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 9999px;
+  background-color: var(--nexo-navy, #123052);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 750;
+  border: none;
+  box-sizing: border-box;
+}
+
+:host-context([dir="rtl"]) {
+  .nav-cta-btn {
+    .cta-arrow {
+      transform: scaleX(-1);
+    }
+
+    &:hover .cta-arrow {
+      transform: scaleX(-1) translateX(3px);
+    }
+  }
+
+  .mobile-contact-btn svg {
+    transform: scaleX(-1);
+  }
+}
+

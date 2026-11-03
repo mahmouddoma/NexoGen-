@@ -1,0 +1,61 @@
+<article 
+  class="product-card"
+  [class.product-card--featured]="product().featured"
+  [attr.data-product-id]="product().id"
+  [attr.data-product-slug]="product().slug">
+
+  <!-- Framing Container for Product Imagery -->
+  <div class="card-visual-frame">
+    <!-- Optional Intro Connection Badge -->
+    @if (product().featured) {
+      <div class="card-intro-badge" title="Featured in Introductory Showcase">
+        <span class="badge-pulse" aria-hidden="true"></span>
+        <span class="badge-text">Intro Spotlight 0{{ product().order }}</span>
+      </div>
+    }
+
+    <div class="image-wrapper">
+      <img 
+        [src]="product().image" 
+        [alt]="product().alt || product().name" 
+        class="card-img"
+        [attr.width]="product().width"
+        [attr.height]="product().height"
+        loading="lazy"
+        draggable="false"
+      />
+      <div class="card-contact-shadow" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <!-- Card Body & Metadata -->
+  <div class="card-content">
+    <div class="card-category-wrapper">
+      <span class="card-category">{{ product().category }}</span>
+      @if (product().subtitle) {
+        <span class="card-subtitle-tag">{{ product().subtitle }}</span>
+      }
+    </div>
+
+    <h3 class="card-title">{{ product().name }}</h3>
+
+    @if (product().shortDescription) {
+      <p class="card-description">{{ product().shortDescription }}</p>
+    }
+
+    <div class="card-footer">
+      <a 
+        [routerLink]="['/products', product().slug]"
+        class="card-action-btn"
+        (click)="onCardClick($event)"
+        [attr.aria-label]="'View details for ' + product().name">
+        <span class="action-text">View Details</span>
+        <svg class="action-arrow" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+</article>
+

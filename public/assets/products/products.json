@@ -1,0 +1,56 @@
+[
+  {
+    "id": "lumgen-care",
+    "name": "LumGen-care Cream",
+    "image": "/assets/products/lumgen-care.webp",
+    "png": "/assets/products/lumgen-care.png",
+    "width": 629,
+    "height": 419,
+    "transparent": true
+  },
+  {
+    "id": "cascadin-4000iu",
+    "name": "Cascadin 4000 IU",
+    "image": "/assets/products/cascadin-4000iu.webp",
+    "png": "/assets/products/cascadin-4000iu.png",
+    "width": 405,
+    "height": 508,
+    "transparent": true
+  },
+  {
+    "id": "sponge-iron",
+    "name": "Sponge-IRON Oral Drops",
+    "image": "/assets/products/sponge-iron.webp",
+    "png": "/assets/products/sponge-iron.png",
+    "width": 443,
+    "height": 638,
+    "transparent": true
+  },
+  {
+    "id": "nexogen-massage-gel",
+    "name": "NexoGen Massage Gel",
+    "image": "/assets/products/nexogen-massage-gel.webp",
+    "png": "/assets/products/nexogen-massage-gel.png",
+    "width": 951,
+    "height": 750,
+    "transparent": true
+  },
+  {
+    "id": "nexoflon",
+    "name": "Nexoflon",
+    "image": "/assets/products/nexoflon.webp",
+    "png": "/assets/products/nexoflon.png",
+    "width": 748,
+    "height": 1033,
+    "transparent": true
+  },
+  {
+    "id": "nexray-care-spray",
+    "name": "Nexray Care Spray",
+    "image": "/assets/products/nexray-care-spray.webp",
+    "png": "/assets/products/nexray-care-spray.png",
+    "width": 421,
+    "height": 746,
+    "transparent": true
+  }
+]

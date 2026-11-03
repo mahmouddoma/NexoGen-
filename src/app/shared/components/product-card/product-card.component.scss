@@ -1,0 +1,227 @@
+// =============================================================================
+// NexoGen Pharma — Product Card Component Styles
+// Editorial Clinical Gallery | Restrained Craft UI
+// =============================================================================
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(18, 48, 82, 0.08);
+  box-shadow: 0 2px 10px rgba(18, 48, 82, 0.03);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+
+  &:hover {
+    border-color: rgba(0, 159, 156, 0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px -12px rgba(18, 48, 82, 0.1);
+
+    .card-img {
+      transform: translateY(-6px) scale(1.03);
+      filter: drop-shadow(0 20px 32px rgba(0, 159, 156, 0.18));
+    }
+
+    .card-contact-shadow {
+      transform: translateX(-50%) scale(1.1);
+      opacity: 0.9;
+    }
+
+    .action-arrow {
+      transform: translateX(5px);
+      color: var(--nexo-teal, #009f9c);
+    }
+
+    .card-action-btn {
+      color: var(--nexo-teal, #009f9c);
+    }
+  }
+
+  &--featured {
+    border-color: rgba(0, 159, 156, 0.18);
+    background: linear-gradient(180deg, rgba(0, 159, 156, 0.02) 0%, #ffffff 40%);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Visual Image Frame
+// -----------------------------------------------------------------------------
+.card-visual-frame {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  padding: 1.75rem 1.5rem 1.25rem 1.5rem;
+  background-color: #fbfcfc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(18, 48, 82, 0.05);
+
+  @media (max-width: 768px) {
+    height: 230px;
+    padding: 1.25rem 1rem 1rem 1rem;
+  }
+}
+
+.card-intro-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 159, 156, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 159, 156, 0.08);
+
+  .badge-pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--nexo-teal, #009f9c);
+  }
+
+  .badge-text {
+    font-size: 0.625rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    color: var(--nexo-teal, #009f9c);
+    text-transform: uppercase;
+  }
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(18, 48, 82, 0.1));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.card-contact-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 16px;
+  background: radial-gradient(ellipse at center, rgba(18, 48, 82, 0.22) 0%, rgba(18, 48, 82, 0) 70%);
+  filter: blur(4px);
+  pointer-events: none;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  opacity: 0.7;
+}
+
+// -----------------------------------------------------------------------------
+// Card Body & Content
+// -----------------------------------------------------------------------------
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+  }
+}
+
+.card-category-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.card-category {
+  font-size: 0.6875rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  color: var(--nexo-teal, #009f9c);
+  text-transform: uppercase;
+}
+
+.card-subtitle-tag {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #7d93a7;
+  &::before {
+    content: "·";
+    margin-right: 0.5rem;
+  }
+}
+
+.card-title {
+  margin: 0 0 0.65rem 0;
+  font-size: 1.2rem;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--nexo-navy, #123052);
+}
+
+.card-description {
+  margin: 0 0 1.5rem 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #556b7f;
+  flex-grow: 1;
+}
+
+// -----------------------------------------------------------------------------
+// Footer & Action Button
+// -----------------------------------------------------------------------------
+.card-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(18, 48, 82, 0.06);
+  display: flex;
+  align-items: center;
+}
+
+.card-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--nexo-navy, #123052);
+  text-decoration: none;
+  outline: none;
+  transition: color 0.25s ease;
+
+  .action-arrow {
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.25s ease;
+  }
+
+  &:focus-visible {
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px var(--nexo-teal, #009f9c);
+  }
+}
+

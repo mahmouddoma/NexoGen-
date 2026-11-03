@@ -1,0 +1,24 @@
+<div class="lang-switcher" role="group" [attr.aria-label]="'COMMON.SELECT_LANGUAGE' | translate">
+  <button 
+    type="button" 
+    class="lang-btn" 
+    [class.lang-btn--active]="currentLang() === 'en'"
+    [attr.aria-pressed]="currentLang() === 'en'"
+    (click)="setLang('en')"
+    aria-label="Switch to English">
+    <span class="lang-text">EN</span>
+  </button>
+
+  <span class="lang-divider" aria-hidden="true">|</span>
+
+  <button 
+    type="button" 
+    class="lang-btn" 
+    [class.lang-btn--active]="currentLang() === 'ar'"
+    [attr.aria-pressed]="currentLang() === 'ar'"
+    (click)="setLang('ar')"
+    aria-label="التبديل إلى اللغة العربية">
+    <span class="lang-text lang-text--ar">عربي</span>
+  </button>
+</div>
+

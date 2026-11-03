@@ -1,0 +1,134 @@
+<section 
+  class="intro-showcase" 
+  #introContainer
+  aria-label="NexoGen Pharma Introductory Product Showcase">
+
+  <!-- =========================================================================
+       Top Header: Brand Emblem & Skip Intro Action
+       ========================================================================= -->
+  <header class="intro-header" #introHeader>
+    <div class="brand-lockup">
+      <img 
+        src="assets/branding/nexogen-logo.png" 
+        alt="NexoGen Pharma Logo" 
+        class="intro-brand-logo" 
+        width="61" 
+        height="52" 
+      />
+    </div>
+
+    <div class="header-actions">
+      <button 
+        type="button" 
+        class="skip-intro-btn" 
+        (click)="onSkipIntro()" 
+        [attr.aria-label]="'INTRO.SKIP_ARIA' | translate">
+        <span class="skip-label">{{ 'INTRO.SKIP_INTRO' | translate }}</span>
+        <svg class="skip-icon" viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path d="M6 10L10 14L14 10M10 6V14" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Main Interactive Showcase Stage
+       ========================================================================= -->
+  <div class="intro-stage" #stageElement>
+
+    <!-- Phase A / B: Brand Introduction & Editorial Statement -->
+    <div class="brand-intro" #brandIntro>
+      <div class="eyebrow-container">
+        <span class="status-indicator" aria-hidden="true"></span>
+        <span class="editorial-eyebrow">{{ 'INTRO.EYEBROW' | translate }}</span>
+      </div>
+      <h1 class="editorial-title">
+        {{ 'INTRO.TITLE_PREFIX' | translate }} <span class="highlight-text">{{ 'INTRO.TITLE_HIGHLIGHT' | translate }}</span>
+      </h1>
+      <p class="editorial-lead">
+        {{ 'INTRO.LEAD' | translate }}
+      </p>
+    </div>
+
+    <!-- Phase A / B / C: Animated Products Composition -->
+    <div class="products-stage" #productsStage aria-live="polite">
+      @for (product of products(); track product.id; let idx = $index) {
+        <div 
+          class="product-item"
+          [class]="'product-item--' + product.id"
+          [attr.data-product-id]="product.id"
+          [attr.data-order]="product.animationOrder"
+          #productItem>
+          
+          <div class="product-visual">
+            <div class="product-ambient-shadow" aria-hidden="true"></div>
+            <img 
+              [src]="product.image" 
+              [alt]="product.alt || product.name"
+              class="product-img"
+              [attr.width]="product.width"
+              [attr.height]="product.height"
+              [attr.fetchpriority]="product.animationOrder === 2 ? 'high' : 'auto'"
+              (load)="onImageLoaded(product.id)"
+              draggable="false"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Subtle Editorial Label below settled product -->
+          <div class="product-card-meta" #productMeta>
+            <div class="product-badge">{{ ('CATALOG.' + product.id + '.badge') | translate }}</div>
+            <h2 class="product-title u-ltr" dir="ltr">{{ product.name }}</h2>
+            <p class="product-sub">{{ ('CATALOG.' + product.id + '.subtitle') | translate }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Phase C: Destination Dock (Landing Target during Scroll Distribution) -->
+    <div class="products-destination" #productsDestination>
+      <div class="dock-backdrop"></div>
+      <div class="dock-header">
+        <span class="dock-title">{{ 'INTRO.DOCK_TITLE' | translate }}</span>
+        <span class="dock-counter">{{ 'INTRO.DOCK_COUNTER' | translate }}</span>
+      </div>
+
+      <div class="destination-slots">
+        @for (product of products(); track product.id) {
+          <div 
+            class="destination-slot"
+            [class]="'slot--' + product.id"
+            [attr.data-slot-for]="product.id"
+            #destinationSlot>
+
+            <!-- Dedicated Landing Zone for Animated Product -->
+            <div class="slot-landing-zone">
+              <div class="slot-pedestal-ring" aria-hidden="true"></div>
+            </div>
+
+            <!-- Clear Product Label & Number Below Product -->
+            <div class="slot-footer-info">
+              <span class="slot-number">0{{ product.animationOrder }}</span>
+              <div class="slot-meta">
+                <span class="slot-name u-ltr" dir="ltr">{{ product.name }}</span>
+                <span class="slot-category">{{ ('CATALOG.' + product.id + '.category') | translate }}</span>
+              </div>
+            </div>
+
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Scroll Hint & Interaction Guide -->
+    <div class="scroll-hint" #scrollHint>
+      <div class="scroll-indicator-mouse" aria-hidden="true">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span class="scroll-text">{{ 'INTRO.SCROLL_HINT' | translate }}</span>
+    </div>
+
+  </div>
+
+</section>
+

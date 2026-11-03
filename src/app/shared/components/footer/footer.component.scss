@@ -1,0 +1,561 @@
+// =============================================================================
+// NexoGen Pharma — Footer Component Styles
+// Solid Deep Navy Architectural Base | Editorial Wordmark Signature
+// =============================================================================
+
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  background-color: #0b1e33;
+  color: #ffffff;
+  font-family: var(--nexo-font-sans, system-ui, sans-serif);
+}
+
+.nexo-footer {
+  position: relative;
+  width: 100%;
+  padding: 6.5rem 2rem 2.5rem 2rem;
+  box-sizing: border-box;
+  background-color: #0b1e33;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  @media (max-width: 768px) {
+    padding: 4.5rem 1.25rem 2rem 1.25rem;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Oversized Low-Contrast Architectural Wordmark
+// -----------------------------------------------------------------------------
+.footer-wordmark-bg {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+  white-space: nowrap;
+
+  .wordmark-text {
+    font-size: clamp(5rem, 16vw, 15rem);
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.025);
+    line-height: 0.85;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Main Footer Content Container
+// -----------------------------------------------------------------------------
+.footer-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+// -----------------------------------------------------------------------------
+// Top Footer Grid
+// -----------------------------------------------------------------------------
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 5rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3.5rem;
+  }
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+
+  &--brand {
+    max-width: 380px;
+  }
+}
+
+.footer-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+.footer-logo-surface {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.95rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .footer-brand-lockup:hover & {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 196, 180, 0.18);
+  }
+}
+
+.footer-logo-img {
+  height: 56px;
+  width: auto;
+  max-width: 85px;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-desc {
+  margin: 0 0 1.25rem 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+.brand-tagline {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nexo-teal-accent, #00c4b4);
+}
+
+.footer-heading {
+  margin: 0 0 1.5rem 0;
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.footer-nav-list,
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+
+  li a {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+
+    &:hover {
+      color: var(--nexo-teal-accent, #00c4b4);
+      transform: translateX(3px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--nexo-teal-accent, #00c4b4);
+      border-radius: 4px;
+    }
+  }
+}
+
+.footer-contact-list {
+  gap: 1.15rem;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .contact-type {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #64748b;
+  }
+
+  .contact-detail,
+  .contact-link {
+    font-size: 0.875rem;
+    font-weight: 550;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  a.contact-link:hover {
+    color: var(--nexo-teal-accent, #00c4b4);
+  }
+
+  .footer-social-link {
+    display: inline-flex !important;
+    align-items: center;
+    width: fit-content;
+    text-decoration: none;
+
+    .social-icon-wrapper {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: rgba(24, 119, 242, 0.15);
+      color: #1877f2;
+      flex-shrink: 0;
+      margin-inline-end: 0.65rem;
+      transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+
+      svg {
+        width: 15px;
+        height: 15px;
+        fill: currentColor;
+      }
+    }
+
+    .social-label {
+      color: #cbd5e1;
+      font-size: 0.875rem;
+      font-weight: 550;
+      line-height: 1.3;
+      transition: color 0.2s ease;
+    }
+
+    &:hover {
+      transform: none;
+
+      .social-icon-wrapper {
+        background-color: #1877f2;
+        color: #ffffff;
+        transform: scale(1.08);
+      }
+
+      .social-label {
+        color: #ffffff;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--nexo-teal-accent, #00c4b4);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Bottom Footer Bar
+// -----------------------------------------------------------------------------
+.footer-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  @media (max-width: 640px) {
+    flex-direction: column-reverse;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+}
+
+.copyright-text {
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.back-to-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.15rem;
+  border-radius: 9999px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  svg {
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: var(--nexo-teal-accent, #00c4b4);
+    color: #ffffff;
+    transform: translateY(-2px);
+
+    svg {
+      transform: translateY(-2px);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--nexo-teal-accent, #00c4b4);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Developer Credit Bar — Mahmoud Doma
+// Distinct, compact, solid background (#071426) attribution bar
+// -----------------------------------------------------------------------------
+.developer-credit {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  background-color: #071426;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: #a8b8c8;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.developer-credit-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.875rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    padding: 0.875rem 1.25rem;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+.developer-credit-meta {
+  display: inline-flex;
+  align-items: center;
+}
+
+.developer-credit-text {
+  color: #a8b8c8;
+  letter-spacing: 0.02em;
+}
+
+.developer-link {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  margin-inline-start: 0.3rem;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+
+  &:hover {
+    color: var(--nexo-teal-accent, #00c4b4);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--nexo-teal-accent, #00c4b4);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+.developer-credit-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+.developer-contact-link {
+  color: #a8b8c8;
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--nexo-teal-accent, #00c4b4);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+.developer-separator {
+  color: rgba(168, 184, 200, 0.35);
+  font-weight: 300;
+  font-size: 0.75rem;
+  user-select: none;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Floating Action Controls (WhatsApp + Back to Top)
+// Stacked vertically on top of each other at viewport edge
+// -----------------------------------------------------------------------------
+.floating-actions {
+  position: fixed;
+  bottom: 2rem;
+  inset-inline-end: 2rem;
+  z-index: 990;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    bottom: 1.5rem;
+    inset-inline-end: 1.25rem;
+    gap: 0.6rem;
+  }
+}
+
+.floating-btn {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease,
+              background-color 0.2s ease,
+              opacity 0.25s ease,
+              visibility 0.25s ease;
+}
+
+// 1. WhatsApp Floating Button (Top of the stack)
+.floating-whatsapp {
+  width: 52px;
+  height: 52px;
+  background-color: #25d366;
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45);
+  border: none;
+
+  svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    background-color: #20ba59;
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.6);
+
+    svg {
+      transform: scale(1.08);
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid #25d366;
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 768px) {
+    width: 46px;
+    height: 46px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+// 2. Back to Top Floating Button (Bottom of the stack)
+.floating-top {
+  width: 48px;
+  height: 48px;
+  background-color: #0b1e33;
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.9);
+  pointer-events: none;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.25s ease;
+  }
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  &:hover {
+    background-color: #123052;
+    border-color: var(--nexo-teal-accent, #00c4b4);
+    color: var(--nexo-teal-accent, #00c4b4);
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 6px 20px rgba(0, 196, 180, 0.3);
+
+    svg {
+      transform: translateY(-2px);
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--nexo-teal-accent, #00c4b4);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 768px) {
+    width: 44px;
+    height: 44px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+

@@ -1,0 +1,117 @@
+<section 
+  class="hero-section" 
+  #heroSection 
+  id="hero"
+  aria-label="NexoGen Pharma Brand Overview">
+
+  <div class="hero-container" #heroContainer>
+    
+    <!-- Main Editorial Two-Column Grid -->
+    <div class="hero-editorial-grid">
+      
+      <!-- Content Column (Right in RTL, Left in LTR) -->
+      <div class="hero-content-col" #heroContentCol>
+        
+        <!-- Brand Eyebrow -->
+        <div class="hero-eyebrow-wrapper" #heroEyebrow>
+          <span class="eyebrow-indicator" aria-hidden="true"></span>
+          <span class="hero-eyebrow">{{ 'HERO.EYEBROW' | translate }}</span>
+        </div>
+
+        <!-- Main Heading: Line 1 (Navy), Line 2 (Teal) -->
+        <h1 class="hero-headline" #heroHeadline>
+          <span class="headline-line headline-line--navy">
+            {{ 'HERO.HEADLINE_LINE1' | translate }}
+          </span>
+          <span class="headline-line headline-line--teal">
+            {{ 'HERO.HEADLINE_LINE2' | translate }}
+          </span>
+        </h1>
+
+        <!-- Supporting Description -->
+        <p class="hero-description" #heroDescription>
+          {{ 'HERO.DESCRIPTION' | translate }}
+        </p>
+
+        <!-- Primary & Secondary CTAs -->
+        <div class="hero-actions" #heroActions>
+          <a 
+            href="#products" 
+            class="hero-btn hero-btn--primary" 
+            (click)="onExploreProducts($event)"
+            [attr.aria-label]="'HERO.CTA_PRIMARY_ARIA' | translate">
+            <span class="btn-text">{{ 'HERO.CTA_PRIMARY' | translate }}</span>
+            <svg class="btn-arrow" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <a 
+            href="#about" 
+            class="hero-btn hero-btn--secondary" 
+            (click)="onDiscoverNexogen($event)"
+            [attr.aria-label]="'HERO.CTA_SECONDARY_ARIA' | translate">
+            <span class="btn-text">{{ 'HERO.CTA_SECONDARY' | translate }}</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Brand Visual Column (Left in RTL, Right in LTR) -->
+      <div class="hero-visual-col" #heroVisualCol aria-hidden="true">
+        <div class="brand-visual-stage">
+          <!-- Architectural Oversized Low-Opacity NG Monogram -->
+          <img 
+            src="assets/branding/nexogen-monogram.png" 
+            alt="" 
+            class="visual-monogram-watermark" 
+            draggable="false"
+            loading="eager"
+            width="420"
+            height="360"
+          />
+
+          <!-- Official NexoGen Pharma Emblem Plinth -->
+          <div class="visual-emblem-card">
+            <div class="emblem-surface">
+              <img 
+                src="assets/branding/nexogen-logo.png" 
+                alt="NexoGen Pharma Official Logo" 
+                class="visual-emblem-logo" 
+                draggable="false"
+                loading="eager"
+                width="220"
+                height="170"
+              />
+            </div>
+            <div class="emblem-tagline">
+              <span class="tagline-dot"></span>
+              <span class="tagline-text">{{ 'HERO.BADGE_LABEL' | translate }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Brand Category Strip -->
+    <div class="hero-category-strip" #heroCategoryStrip aria-label="Therapeutic Disciplines">
+      <div class="category-item">
+        <span class="category-indicator" aria-hidden="true"></span>
+        <span class="category-title">{{ 'HERO.CATEGORY_HEALTHCARE' | translate }}</span>
+      </div>
+      <div class="category-separator" aria-hidden="true"></div>
+      <div class="category-item">
+        <span class="category-indicator" aria-hidden="true"></span>
+        <span class="category-title">{{ 'HERO.CATEGORY_SUPPLEMENTS' | translate }}</span>
+      </div>
+      <div class="category-separator" aria-hidden="true"></div>
+      <div class="category-item">
+        <span class="category-indicator" aria-hidden="true"></span>
+        <span class="category-title">{{ 'HERO.CATEGORY_PERSONAL_CARE' | translate }}</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+

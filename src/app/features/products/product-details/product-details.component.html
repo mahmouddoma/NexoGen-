@@ -1,0 +1,303 @@
+<main class="product-editorial-page" id="main-content">
+  <div class="editorial-container" #detailsContainer>
+
+    @if (currentProduct(); as prod) {
+      
+      <!-- Minimal Functional Breadcrumb -->
+      <nav class="editorial-breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/" class="breadcrumb-link">{{ 'PRODUCT_DETAILS.BREADCRUMB_HOME' | translate }}</a>
+        <span class="breadcrumb-separator" aria-hidden="true">/</span>
+        <a routerLink="/" fragment="products" class="breadcrumb-link">{{ 'PRODUCT_DETAILS.BREADCRUMB_PORTFOLIO' | translate }}</a>
+        <span class="breadcrumb-separator" aria-hidden="true">/</span>
+        <span class="breadcrumb-current u-ltr" dir="ltr">{{ prod.name }}</span>
+      </nav>
+
+      <!-- Main Editorial Hero (Asymmetric Two-Column Presentation) -->
+      <div class="editorial-hero">
+        
+        <!-- Left Column: Product Stage (Dominant 58%) -->
+        <div class="product-stage-pane" [class]="'stage--' + prod.id">
+          <div class="stage-backdrop-glow" aria-hidden="true"></div>
+          
+          <div class="stage-canvas">
+            <img 
+              [src]="prod.png || prod.image" 
+              [alt]="prod.alt || prod.name"
+              class="product-hero-image"
+              [class]="'img--' + prod.id"
+              [attr.width]="prod.width"
+              [attr.height]="prod.height"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div class="product-grounding-shadow" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Right Column: Product Information (42%) -->
+        <div class="product-info-pane">
+          
+          <!-- Category & Authentic Status -->
+          <div class="info-header-meta">
+            <span class="category-pill">{{ ('CATALOG.' + prod.id + '.category') | translate }}</span>
+            @if (prod.badge) {
+              <span class="editorial-badge">{{ ('CATALOG.' + prod.id + '.badge') | translate }}</span>
+            }
+          </div>
+
+          <!-- Product Title -->
+          <h1 class="editorial-product-title u-ltr" dir="ltr">{{ prod.name }}</h1>
+
+          <!-- Subtitle (if available) -->
+          @if (prod.subtitle) {
+            <p class="editorial-product-subtitle">{{ ('CATALOG.' + prod.id + '.subtitle') | translate }}</p>
+          }
+
+          <!-- Primary Description -->
+          <p class="editorial-lead-description">
+            {{ ('CATALOG.' + prod.id + '.shortDescription') | translate }}
+          </p>
+
+          <!-- Product Facts (Clean Horizontal Rows with Thin Dividers) -->
+          <div class="product-facts-table">
+            <div class="fact-row">
+              <span class="fact-label">{{ 'PRODUCT_DETAILS.FACT_CLASS' | translate }}</span>
+              <span class="fact-value">{{ ('CATALOG.' + prod.id + '.therapeuticClass') | translate }}</span>
+            </div>
+
+            <div class="fact-row">
+              <span class="fact-label">{{ 'PRODUCT_DETAILS.FACT_PACKAGING' | translate }}</span>
+              <span class="fact-value">{{ ('CATALOG.' + prod.id + '.packaging') | translate }}</span>
+            </div>
+
+            <div class="fact-row">
+              <span class="fact-label">{{ 'PRODUCT_DETAILS.FACT_QUALITY' | translate }}</span>
+              <span class="fact-value">{{ 'PRODUCT_DETAILS.FACT_QUALITY_VAL' | translate }}</span>
+            </div>
+          </div>
+
+          <!-- Expandable Information Sections (Accordions) -->
+          <div class="expandable-sections" role="region" aria-label="Detailed Product Specifications">
+            
+            <!-- Accordion 1: Product Overview -->
+            <div class="accordion-item" [class.accordion-item--open]="isSectionOpen('overview')">
+              <button 
+                type="button" 
+                class="accordion-trigger" 
+                (click)="toggleSection('overview')"
+                [attr.aria-expanded]="isSectionOpen('overview')"
+                aria-controls="panel-overview"
+                id="trigger-overview">
+                <span class="accordion-title">{{ 'PRODUCT_DETAILS.ACCORDION_OVERVIEW' | translate }}</span>
+                <span class="accordion-indicator" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10 4v12M4 10h12" class="icon-line-v"/>
+                    <path d="M4 10h12"/>
+                  </svg>
+                </span>
+              </button>
+              <div 
+                id="panel-overview" 
+                class="accordion-panel" 
+                role="region" 
+                aria-labelledby="trigger-overview"
+                [hidden]="!isSectionOpen('overview')">
+                <div class="panel-content">
+                  <p>{{ ('CATALOG.' + prod.id + '.shortDescription') | translate }}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion 2: Packaging Details -->
+            @if (prod.packagingDetails) {
+              <div class="accordion-item" [class.accordion-item--open]="isSectionOpen('packaging')">
+                <button 
+                  type="button" 
+                  class="accordion-trigger" 
+                  (click)="toggleSection('packaging')"
+                  [attr.aria-expanded]="isSectionOpen('packaging')"
+                  aria-controls="panel-packaging"
+                  id="trigger-packaging">
+                  <span class="accordion-title">{{ 'PRODUCT_DETAILS.ACCORDION_PACKAGING' | translate }}</span>
+                  <span class="accordion-indicator" aria-hidden="true">
+                    <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M10 4v12M4 10h12" class="icon-line-v"/>
+                      <path d="M4 10h12"/>
+                    </svg>
+                  </span>
+                </button>
+                <div 
+                  id="panel-packaging" 
+                  class="accordion-panel" 
+                  role="region" 
+                  aria-labelledby="trigger-packaging"
+                  [hidden]="!isSectionOpen('packaging')">
+                  <div class="panel-content">
+                    <p>{{ ('CATALOG.' + prod.id + '.packagingDetails') | translate }}</p>
+                  </div>
+                </div>
+              </div>
+            }
+
+            <!-- Accordion 3: Storage & Handling -->
+            @if (prod.storageAndHandling) {
+              <div class="accordion-item" [class.accordion-item--open]="isSectionOpen('storage')">
+                <button 
+                  type="button" 
+                  class="accordion-trigger" 
+                  (click)="toggleSection('storage')"
+                  [attr.aria-expanded]="isSectionOpen('storage')"
+                  aria-controls="panel-storage"
+                  id="trigger-storage">
+                  <span class="accordion-title">{{ 'PRODUCT_DETAILS.ACCORDION_STORAGE' | translate }}</span>
+                  <span class="accordion-indicator" aria-hidden="true">
+                    <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M10 4v12M4 10h12" class="icon-line-v"/>
+                      <path d="M4 10h12"/>
+                    </svg>
+                  </span>
+                </button>
+                <div 
+                  id="panel-storage" 
+                  class="accordion-panel" 
+                  role="region" 
+                  aria-labelledby="trigger-storage"
+                  [hidden]="!isSectionOpen('storage')">
+                  <div class="panel-content">
+                    <p>{{ ('CATALOG.' + prod.id + '.storageAndHandling') | translate }}</p>
+                  </div>
+                </div>
+              </div>
+            }
+
+          </div>
+
+          <!-- Action CTAs -->
+          <div class="editorial-actions">
+            <a routerLink="/" fragment="contact" class="action-btn action-btn--primary">
+              <span>{{ 'PRODUCT_DETAILS.INQUIRE_BTN' | translate }}</span>
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a routerLink="/" fragment="products" class="action-btn action-btn--secondary">
+              <span>{{ 'PRODUCT_DETAILS.PORTFOLIO_BTN' | translate }}</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Product Navigation: Previous / Next Product -->
+      @if (navigation(); as nav) {
+        <nav class="product-pagination-nav" aria-label="Product Portfolio Navigation">
+          
+          <!-- Previous Product -->
+          <a 
+            [routerLink]="['/products', nav.previous.slug]" 
+            (click)="onNavigateProduct()"
+            class="pagination-card pagination-card--prev"
+            [attr.aria-label]="('PRODUCT_DETAILS.PAGINATION_PREV' | translate) + ': ' + nav.previous.name">
+            <div class="pagination-arrow" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 10H4M4 10L10 4M4 10L10 16" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="pagination-preview">
+              <img [src]="nav.previous.image" [alt]="nav.previous.name" class="pagination-thumb" loading="lazy" />
+            </div>
+            <div class="pagination-meta">
+              <span class="pagination-dir">{{ 'PRODUCT_DETAILS.PAGINATION_PREV' | translate }}</span>
+              <span class="pagination-name u-ltr" dir="ltr">{{ nav.previous.name }}</span>
+            </div>
+          </a>
+
+          <!-- Return to Catalog Anchor -->
+          <a routerLink="/" fragment="products" class="pagination-catalog-link" [title]="'PRODUCT_DETAILS.PAGINATION_CATALOG' | translate" [attr.aria-label]="'PRODUCT_DETAILS.PAGINATION_CATALOG' | translate">
+            <div class="grid-icon" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <span class="catalog-text">{{ 'PRODUCT_DETAILS.PAGINATION_CATALOG' | translate }}</span>
+          </a>
+
+          <!-- Next Product -->
+          <a 
+            [routerLink]="['/products', nav.next.slug]" 
+            (click)="onNavigateProduct()"
+            class="pagination-card pagination-card--next"
+            [attr.aria-label]="('PRODUCT_DETAILS.PAGINATION_NEXT' | translate) + ': ' + nav.next.name">
+            <div class="pagination-meta">
+              <span class="pagination-dir">{{ 'PRODUCT_DETAILS.PAGINATION_NEXT' | translate }}</span>
+              <span class="pagination-name u-ltr" dir="ltr">{{ nav.next.name }}</span>
+            </div>
+            <div class="pagination-preview">
+              <img [src]="nav.next.image" [alt]="nav.next.name" class="pagination-thumb" loading="lazy" />
+            </div>
+            <div class="pagination-arrow" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </a>
+
+        </nav>
+      }
+
+      <!-- Related Products Strip (Max 3 Complementary Formulations) -->
+      @if (relatedProducts().length > 0) {
+        <section class="related-products-section" aria-label="Related NexoGen Formulations">
+          <div class="related-header">
+            <div class="related-eyebrow">
+              <span class="eyebrow-indicator" aria-hidden="true"></span>
+              <span>{{ 'PRODUCT_DETAILS.RELATED_EYEBROW' | translate }}</span>
+            </div>
+            <h2 class="related-title">{{ 'PRODUCT_DETAILS.RELATED_TITLE' | translate }}</h2>
+          </div>
+
+          <div class="related-grid">
+            @for (rel of relatedProducts(); track rel.id) {
+              <a 
+                [routerLink]="['/products', rel.slug]" 
+                (click)="onNavigateProduct()"
+                class="related-card"
+                [class]="'related-card--' + rel.id"
+                [attr.aria-label]="('PRODUCT_DETAILS.RELATED_LINK' | translate) + ': ' + rel.name">
+                <div class="related-visual">
+                  <img [src]="rel.image" [alt]="rel.alt || rel.name" class="related-img" loading="lazy" />
+                </div>
+                <div class="related-meta">
+                  <span class="related-category">{{ ('CATALOG.' + rel.id + '.category') | translate }}</span>
+                  <h3 class="related-name u-ltr" dir="ltr">{{ rel.name }}</h3>
+                  <span class="related-link-text">
+                    <span>{{ 'PRODUCT_DETAILS.RELATED_LINK' | translate }}</span>
+                    <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            }
+          </div>
+        </section>
+      }
+
+    } @else {
+      <!-- 404 / Missing Product State -->
+      <div class="not-found-state" role="alert">
+        <div class="not-found-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="var(--nexo-teal)" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4M12 16h.01"/>
+          </svg>
+        </div>
+        <h2 class="not-found-title">{{ 'PRODUCT_DETAILS.NOT_FOUND_TITLE' | translate }}</h2>
+        <p class="not-found-lead">{{ 'PRODUCT_DETAILS.NOT_FOUND_LEAD' | translate }}</p>
+        <a routerLink="/" fragment="products" class="action-btn action-btn--primary">
+          <span>{{ 'PRODUCT_DETAILS.NOT_FOUND_BTN' | translate }}</span>
+        </a>
+      </div>
+    }
+
+  </div>
+</main>

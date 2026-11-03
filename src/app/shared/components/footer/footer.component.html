@@ -1,0 +1,195 @@
+<footer class="nexo-footer" aria-label="NexoGen Pharma Global Footer">
+  
+  <!-- Architectural Low-Contrast Background Wordmark -->
+  <div class="footer-wordmark-bg" aria-hidden="true">
+    <span class="wordmark-text">{{ 'FOOTER.WORDMARK' | translate }}</span>
+  </div>
+
+  <div class="footer-container">
+    
+    <!-- Top Footer Grid -->
+    <div class="footer-grid">
+      
+      <!-- Brand Column -->
+      <div class="footer-col footer-col--brand">
+        <a routerLink="/" fragment="home" (click)="onNavigateHome($event)" class="footer-brand-lockup" aria-label="NexoGen Pharma Homepage">
+          <div class="footer-logo-surface">
+            <img 
+              src="assets/branding/nexogen-logo.png" 
+              alt="NexoGen Pharma Logo" 
+              class="footer-logo-img" 
+              width="68" 
+              height="58"
+              loading="lazy"
+            />
+          </div>
+        </a>
+
+        <p class="brand-desc">
+          {{ 'FOOTER.BRAND_DESC' | translate }}
+        </p>
+
+        <span class="brand-tagline">{{ 'FOOTER.BRAND_TAGLINE' | translate }}</span>
+      </div>
+
+      <!-- Quick Navigation Column -->
+      <div class="footer-col">
+        <h4 class="footer-heading">{{ 'FOOTER.NAV_HEADING' | translate }}</h4>
+        <ul class="footer-nav-list">
+          <li><a routerLink="/" fragment="home" (click)="onSectionClick('home', $event)">{{ 'NAV.HOME' | translate }}</a></li>
+          <li><a routerLink="/" fragment="products" (click)="onSectionClick('products', $event)">{{ 'NAV.PRODUCTS' | translate }}</a></li>
+          <li><a routerLink="/" fragment="about" (click)="onSectionClick('about', $event)">{{ 'NAV.ABOUT' | translate }}</a></li>
+          <li><a routerLink="/" fragment="why-nexogen" (click)="onSectionClick('why-nexogen', $event)">{{ 'NAV.WHY_US' | translate }}</a></li>
+          <li><a routerLink="/" fragment="contact" (click)="onSectionClick('contact', $event)">{{ 'NAV.CONTACT' | translate }}</a></li>
+        </ul>
+      </div>
+
+      <!-- Real Products Column -->
+      <div class="footer-col">
+        <h4 class="footer-heading">{{ 'FOOTER.THERAPEUTICS_HEADING' | translate }}</h4>
+        <ul class="footer-nav-list">
+          @for (product of products; track product.slug) {
+            <li>
+              <a [routerLink]="['/products', product.slug]" class="u-ltr" dir="ltr">
+                {{ product.name }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Real Contact Details Column -->
+      <div class="footer-col">
+        <h4 class="footer-heading">{{ 'FOOTER.CONTACT_HEADING' | translate }}</h4>
+        <ul class="footer-contact-list">
+          <li>
+            <span class="contact-type">{{ 'FOOTER.EMAIL_LABEL' | translate }}</span>
+            <a [href]="'mailto:' + contactInfo.email" class="contact-link u-ltr" dir="ltr">{{ contactInfo.email }}</a>
+          </li>
+          <li>
+            <span class="contact-type">{{ 'FOOTER.MOBILE_LABEL' | translate }}</span>
+            <a [href]="'tel:' + contactInfo.mobileTel" class="contact-link u-ltr" dir="ltr">{{ contactInfo.mobileDisplay }}</a>
+          </li>
+          <li>
+            <span class="contact-type">{{ 'FOOTER.ADDRESS_LABEL' | translate }}</span>
+            <span class="contact-detail">{{ 'CONTACT.CHANNELS.ADDRESS_VALUE' | translate }}</span>
+          </li>
+          <li>
+            <span class="contact-type">{{ 'FOOTER.SERVICE_AREA_LABEL' | translate }}</span>
+            <span class="contact-detail">{{ 'CONTACT.CHANNELS.SERVICE_AREA_VALUE' | translate }}</span>
+          </li>
+          <li>
+            <span class="contact-type">{{ 'FOOTER.CONNECT_LABEL' | translate }}</span>
+            <a 
+              [href]="contactInfo.facebookUrl" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="contact-link footer-social-link"
+              [attr.aria-label]="'FOOTER.FACEBOOK_PAGE' | translate">
+              <span class="social-icon-wrapper" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </span>
+              <span class="social-label">{{ 'CONTACT.CHANNELS.FACEBOOK_HANDLE' | translate }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Footer Bar -->
+    <div class="footer-bottom-bar">
+      <div class="copyright-text">
+        &copy; {{ currentYear }} NexoGen Pharma. {{ 'FOOTER.ALL_RIGHTS' | translate }}
+      </div>
+
+      <div class="bottom-actions">
+        <button 
+          type="button" 
+          class="back-to-top-btn" 
+          (click)="scrollToTop()" 
+          [attr.aria-label]="'FOOTER.BACK_TO_TOP' | translate">
+          <span>{{ 'FOOTER.BACK_TO_TOP' | translate }}</span>
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10 16V4M10 4L4 10M10 4L16 10" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- =========================================================================
+     Developer Credit Bar — Mahmoud Doma
+     Subtle, minimal attribution bar beneath official NexoGen Pharma footer
+     ========================================================================= -->
+<div class="developer-credit" aria-label="Developer Attribution">
+  <div class="developer-credit-container">
+    <div class="developer-credit-meta">
+      <span class="developer-credit-text">
+        {{ 'FOOTER.DEV_POWERED_BY' | translate }}
+        <a 
+          [href]="developerInfo.portfolioUrl" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="developer-link"
+          [attr.aria-label]="'FOOTER.DEV_PORTFOLIO_ARIA' | translate">
+          {{ 'FOOTER.DEV_NAME' | translate }}
+        </a>
+      </span>
+    </div>
+
+    <div class="developer-credit-contact">
+      <a 
+        [href]="'mailto:' + developerInfo.email" 
+        class="developer-contact-link u-ltr" 
+        dir="ltr"
+        [attr.aria-label]="'FOOTER.DEV_EMAIL_ARIA' | translate">
+        {{ developerInfo.email }}
+      </a>
+      <span class="developer-separator" aria-hidden="true">|</span>
+      <a 
+        [href]="'tel:' + developerInfo.phoneTel" 
+        class="developer-contact-link u-ltr" 
+        dir="ltr"
+        [attr.aria-label]="'FOOTER.DEV_PHONE_ARIA' | translate">
+        {{ developerInfo.phoneDisplay }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     Floating Action Controls (WhatsApp + Back to Top)
+     Stacked vertically on top of each other at the corner of the viewport
+     ========================================================================= -->
+<div class="floating-actions" aria-label="Quick Actions">
+  <!-- WhatsApp Floating Button (Top) -->
+  <a 
+    [href]="contactInfo.whatsappUrl" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="floating-btn floating-whatsapp"
+    [attr.aria-label]="'FOOTER.WHATSAPP_ARIA' | translate">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+      <path d="M12.031 2c-5.508 0-9.986 4.477-9.986 9.984 0 1.761.458 3.479 1.328 4.996L2 22l5.163-1.354c1.464.798 3.111 1.22 4.868 1.22 5.509 0 9.987-4.478 9.987-9.984 0-5.507-4.478-9.982-9.987-9.982zm0 18.285c-1.524 0-3.018-.41-4.322-1.186l-.31-.184-3.208.841.857-3.125-.202-.321c-.854-1.358-1.306-2.929-1.306-4.526 0-4.568 3.717-8.285 8.291-8.285 4.573 0 8.29 3.717 8.29 8.285 0 4.568-3.717 8.285-8.29 8.285zm4.545-6.208c-.249-.125-1.474-.728-1.703-.811-.229-.083-.396-.125-.562.125-.166.25-.644.811-.79 1-.145.187-.291.208-.54.083-.25-.125-1.054-.388-2.008-1.238-.742-.662-1.243-1.48-1.388-1.73-.146-.25-.016-.385.109-.509.112-.112.249-.291.374-.437.125-.145.166-.25.249-.416.083-.166.042-.312-.021-.437-.062-.125-.562-1.354-.77-1.854-.203-.487-.409-.42-.562-.428l-.479-.009c-.166 0-.437.062-.666.312-.229.25-.874.854-.874 2.083 0 1.229.895 2.416 1.02 2.583.125.166 1.761 2.688 4.267 3.77.596.257 1.061.41 1.424.526.598.19 1.143.163 1.574.099.48-.072 1.474-.603 1.682-1.187.208-.583.208-1.083.146-1.187-.063-.104-.229-.166-.479-.291z"/>
+    </svg>
+  </a>
+
+  <!-- Floating Back to Top Button (Bottom) -->
+  <button 
+    type="button" 
+    class="floating-btn floating-top back-to-top-btn" 
+    [class.is-visible]="showBackToTop()"
+    (click)="scrollToTop()" 
+    [attr.aria-label]="'FOOTER.BACK_TO_TOP' | translate">
+    <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <path d="M10 16V4M10 4L4 10M10 4L16 10" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
+
