@@ -267,41 +267,42 @@ export class IntroShowcaseComponent implements OnDestroy {
 
     // MOBILE: <= 768px (Responsive spread prevents clipping on 320px - 430px viewports)
     this.mm.add('(max-width: 768px)', () => {
-      const mobileSpread = Math.min(85, Math.max(65, window.innerWidth * 0.22));
-      const mobileScale = window.innerWidth < 380 ? 0.65 : 0.72;
-      const centerScale = window.innerWidth < 380 ? 0.78 : 0.85;
+      const isSmallMobile = window.innerWidth <= 380;
+      const mobileSpread = Math.min(64, Math.max(46, window.innerWidth * 0.16));
+      const flankingScale = isSmallMobile ? 0.78 : 0.85;
+      const centerScale = isSmallMobile ? 0.95 : 1.05;
 
       const config: ChoreographyConfig = {
         lumgen: {
-          enterX: dirSign * -window.innerWidth * 0.7,
+          enterX: dirSign * -window.innerWidth * 0.55,
           enterY: 20,
           settleX: dirSign * -mobileSpread,
-          settleY: 30,
+          settleY: 15,
           rot: dirSign * -3,
-          scale: mobileScale,
+          scale: flankingScale,
         },
         cascadin: {
-          enterX: dirSign * window.innerWidth * 0.7,
-          enterY: -30,
+          enterX: dirSign * window.innerWidth * 0.55,
+          enterY: -20,
           settleX: 0,
-          settleY: -25,
+          settleY: -10,
           rot: 0,
           scale: centerScale,
         },
         sponge: {
-          enterX: dirSign * window.innerWidth * 0.5,
-          enterY: window.innerHeight * 0.4,
+          enterX: dirSign * window.innerWidth * 0.45,
+          enterY: window.innerHeight * 0.35,
           settleX: dirSign * mobileSpread,
-          settleY: 25,
+          settleY: 12,
           rot: dirSign * 3,
-          scale: mobileScale,
+          scale: flankingScale,
         },
       };
 
       this.createEntranceAnimation(config);
       this.createScrollAnimation({
-        targetScale: 0.16,
-        destinationOffsetY: 140,
+        targetScale: 0.13,
+        destinationOffsetY: 95,
         config,
       });
     });
@@ -725,12 +726,17 @@ export class IntroShowcaseComponent implements OnDestroy {
     if (scrollHintEl) gsap.set(scrollHintEl, { opacity: 0 });
     if (destinationEl) gsap.set(destinationEl, { opacity: 1, y: 0 });
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const spread = isMobile ? Math.min(64, window.innerWidth * 0.16) : 240;
+    const sideScale = isMobile ? 0.85 : 0.95;
+    const centerScale = 1.05;
+
     const [lumgenEl, cascadinEl, spongeEl] = items;
     if (lumgenEl)
-      gsap.set(lumgenEl, { x: dirSign * -240, y: 25, rotation: 0, scale: 0.95, opacity: 1 });
-    if (cascadinEl) gsap.set(cascadinEl, { x: 0, y: -25, rotation: 0, scale: 1.05, opacity: 1 });
+      gsap.set(lumgenEl, { x: dirSign * -spread, y: isMobile ? 15 : 25, rotation: 0, scale: sideScale, opacity: 1 });
+    if (cascadinEl) gsap.set(cascadinEl, { x: 0, y: isMobile ? -10 : -25, rotation: 0, scale: centerScale, opacity: 1 });
     if (spongeEl)
-      gsap.set(spongeEl, { x: dirSign * 240, y: 20, rotation: 0, scale: 0.95, opacity: 1 });
+      gsap.set(spongeEl, { x: dirSign * spread, y: isMobile ? 12 : 20, rotation: 0, scale: sideScale, opacity: 1 });
 
     const metaLabels = items
       .map((item) => item.querySelector('.product-card-meta'))
