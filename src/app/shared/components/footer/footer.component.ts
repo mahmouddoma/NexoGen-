@@ -69,8 +69,13 @@ export class FooterComponent implements OnDestroy {
     this.ngZone.runOutsideAngular(() => {
       this.scrollListener = () => {
         const scrollY = window.scrollY || window.pageYOffset;
-        const shouldShow = scrollY > 250;
-        const shouldShowMobile = scrollY > 140;
+        const heroEl = document.getElementById('hero');
+        const isPastIntro = heroEl 
+          ? heroEl.getBoundingClientRect().top <= (window.innerHeight || document.documentElement.clientHeight) 
+          : scrollY > 400;
+
+        const shouldShow = isPastIntro && scrollY > 250;
+        const shouldShowMobile = isPastIntro;
 
         if (shouldShow !== this.showBackToTop()) {
           this.ngZone.run(() => {

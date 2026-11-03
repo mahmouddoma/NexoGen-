@@ -529,9 +529,16 @@
   transform: translateY(12px) scale(0.9);
   pointer-events: none;
 
+  i {
+    font-size: 1.25rem;
+    line-height: 1;
+    color: #ffffff;
+    transition: transform 0.25s ease, color 0.2s ease;
+  }
+
   svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     transition: transform 0.25s ease;
   }
 
@@ -549,6 +556,11 @@
     transform: translateY(-3px) scale(1.06);
     box-shadow: 0 6px 20px rgba(0, 196, 180, 0.3);
 
+    i {
+      color: var(--nexo-teal-accent, #00c4b4);
+      transform: translateY(-2px);
+    }
+
     svg {
       transform: translateY(-2px);
     }
@@ -562,6 +574,10 @@
   @media (max-width: 768px) {
     width: 44px;
     height: 44px;
+
+    i {
+      font-size: 1.15rem;
+    }
 
     svg {
       width: 18px;
