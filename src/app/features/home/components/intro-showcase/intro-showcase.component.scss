@@ -41,7 +41,7 @@
   pointer-events: none;
 
   @media (max-width: 768px) {
-    top: 4.5rem;
+    top: 4.75rem;
     padding: 0 1rem;
   }
 
@@ -135,7 +135,7 @@
   box-sizing: border-box;
 
   @media (max-width: 768px) {
-    padding: 6.75rem 1rem 1rem 1rem;
+    padding: 7.75rem 1rem 1rem 1rem;
   }
 }
 
@@ -338,7 +338,7 @@
   pointer-events: none;
 
   @media (max-width: 768px) {
-    margin-top: 0.25rem;
+    display: none !important;
   }
 }
 
@@ -401,10 +401,10 @@
   transition: opacity 0.4s ease;
 
   @media (max-width: 768px) {
-    margin-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+    margin-bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
     max-width: 100%;
     width: calc(100% - 1rem);
-    padding: 0 0.5rem;
+    padding: 0 0.4rem;
     box-sizing: border-box;
   }
 }

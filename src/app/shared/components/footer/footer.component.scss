@@ -443,8 +443,8 @@
   pointer-events: none;
 
   @media (max-width: 768px) {
-    bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
-    inset-inline-end: 1rem;
+    bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+    inset-inline-end: 0.85rem;
     gap: 0.6rem;
   }
 }

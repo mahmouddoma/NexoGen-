@@ -423,10 +423,11 @@
               opacity 0.3s ease;
 
   @media (max-width: 768px) {
-    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
-    width: calc(100% - 1.25rem);
+    bottom: calc(1.15rem + env(safe-area-inset-bottom, 0px));
+    width: calc(100% - 1.5rem);
     max-width: 440px;
-    padding: 0.3rem 0.35rem;
+    padding: 0.35rem 0.4rem;
+    box-sizing: border-box;
   }
 }
 
