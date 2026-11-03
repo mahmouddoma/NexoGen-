@@ -4,34 +4,6 @@
   aria-label="NexoGen Pharma Introductory Product Showcase">
 
   <!-- =========================================================================
-       Top Header: Brand Emblem & Skip Intro Action
-       ========================================================================= -->
-  <header class="intro-header" #introHeader>
-    <div class="brand-lockup">
-      <img 
-        src="assets/branding/nexogen-logo.png" 
-        alt="NexoGen Pharma Logo" 
-        class="intro-brand-logo" 
-        width="61" 
-        height="52" 
-      />
-    </div>
-
-    <div class="header-actions">
-      <button 
-        type="button" 
-        class="skip-intro-btn" 
-        (click)="onSkipIntro()" 
-        [attr.aria-label]="'INTRO.SKIP_ARIA' | translate">
-        <span class="skip-label">{{ 'INTRO.SKIP_INTRO' | translate }}</span>
-        <svg class="skip-icon" viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75">
-          <path d="M6 10L10 14L14 10M10 6V14" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
-  </header>
-
-  <!-- =========================================================================
        Main Interactive Showcase Stage
        ========================================================================= -->
   <div class="intro-stage" #stageElement>

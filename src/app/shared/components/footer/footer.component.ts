@@ -47,6 +47,7 @@ export class FooterComponent implements OnDestroy {
 
   // Reactive visibility signal for the floating Back to Top button
   readonly showBackToTop = signal<boolean>(false);
+  readonly showMobileFloating = signal<boolean>(false);
 
   private scrollListener?: () => void;
 
@@ -69,9 +70,17 @@ export class FooterComponent implements OnDestroy {
       this.scrollListener = () => {
         const scrollY = window.scrollY || window.pageYOffset;
         const shouldShow = scrollY > 250;
+        const shouldShowMobile = scrollY > 140;
+
         if (shouldShow !== this.showBackToTop()) {
           this.ngZone.run(() => {
             this.showBackToTop.set(shouldShow);
+          });
+        }
+
+        if (shouldShowMobile !== this.showMobileFloating()) {
+          this.ngZone.run(() => {
+            this.showMobileFloating.set(shouldShowMobile);
           });
         }
       };

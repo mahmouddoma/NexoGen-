@@ -154,7 +154,10 @@
      Floating Action Controls (WhatsApp + Back to Top)
      Stacked vertically on top of each other at the corner of the viewport
      ========================================================================= -->
-<div class="floating-actions" aria-label="Quick Actions">
+<div 
+  class="floating-actions" 
+  [class.is-mobile-visible]="showMobileFloating()"
+  aria-label="Quick Actions">
   <!-- WhatsApp Floating Button (Top) -->
   <a 
     [href]="contactInfo.whatsappUrl" 
