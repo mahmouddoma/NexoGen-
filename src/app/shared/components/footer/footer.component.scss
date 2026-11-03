@@ -333,6 +333,11 @@
   font-size: 0.75rem;
   line-height: 1.5;
   box-sizing: border-box;
+  padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+
+  @media (max-width: 640px) {
+    padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 .developer-credit-container {
