@@ -301,7 +301,7 @@ export class IntroShowcaseComponent implements OnDestroy {
 
       this.createEntranceAnimation(config);
       this.createScrollAnimation({
-        targetScale: 0.13,
+        targetScale: 0.2,
         destinationOffsetY: 95,
         config,
       });
@@ -676,11 +676,11 @@ export class IntroShowcaseComponent implements OnDestroy {
     fallbackX: number = 0,
   ): number {
     if (!slotEl) return fallbackX;
-    const stage = this.stageElement()?.nativeElement;
+    const stage = this.productsStage()?.nativeElement || this.stageElement()?.nativeElement;
     if (!stage) return fallbackX;
-    const landingZone = (slotEl.querySelector('.slot-landing-zone') as HTMLElement) || slotEl;
+    const ringEl = (slotEl.querySelector('.slot-pedestal-ring') as HTMLElement) || slotEl;
     const stageRect = stage.getBoundingClientRect();
-    const targetRect = landingZone.getBoundingClientRect();
+    const targetRect = ringEl.getBoundingClientRect();
 
     if (!stageRect.width || !targetRect.width) return fallbackX;
 
@@ -698,17 +698,22 @@ export class IntroShowcaseComponent implements OnDestroy {
     fallbackY: number = 180,
   ): number {
     if (!slotEl) return fallbackY;
-    const stage = this.stageElement()?.nativeElement;
+    const stage = this.productsStage()?.nativeElement || this.stageElement()?.nativeElement;
     if (!stage) return fallbackY;
-    const landingZone = (slotEl.querySelector('.slot-landing-zone') as HTMLElement) || slotEl;
+    const ringEl = (slotEl.querySelector('.slot-pedestal-ring') as HTMLElement) || slotEl;
     const stageRect = stage.getBoundingClientRect();
-    const targetRect = landingZone.getBoundingClientRect();
+    const targetRect = ringEl.getBoundingClientRect();
 
     if (!stageRect.height || !targetRect.height) return fallbackY;
 
     const stageCenterY = stageRect.top + stageRect.height / 2;
     const targetCenterY = targetRect.top + targetRect.height / 2;
-    return targetCenterY - stageCenterY;
+
+    // Upward offset so the base of the bottle sits directly on the pedestal ring
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const baseOffset = isMobile ? -14 : -24;
+
+    return (targetCenterY - stageCenterY) + baseOffset;
   }
 
   /**
