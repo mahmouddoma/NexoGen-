@@ -81,5 +81,17 @@ describe('NavbarComponent', () => {
     expect(logoImg?.getAttribute('src')).toContain('assets/branding/nexogen-logo.png');
     expect(logoImg?.getAttribute('alt')).toBe('NexoGen Pharma');
   });
+
+  it('should render the floating bottom navigation dock with FontAwesome icons', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const dock = compiled.querySelector('.nexo-floating-dock');
+    expect(dock).toBeTruthy();
+
+    const dockLinks = compiled.querySelectorAll('.dock-link');
+    expect(dockLinks.length).toBe(5);
+
+    const icons = compiled.querySelectorAll('.dock-icon-wrapper i.fa-solid');
+    expect(icons.length).toBe(5);
+  });
 });
 

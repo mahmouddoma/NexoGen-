@@ -106,7 +106,9 @@
               class="mobile-nav-link"
               [class.mobile-nav-link--active]="activeSection() === item.id"
               (click)="onNavClick(item.id, $event)">
-              <span class="item-number">0{{ $index + 1 }}</span>
+              <span class="item-icon-box" aria-hidden="true">
+                <i [class]="item.faIcon"></i>
+              </span>
               <span class="item-name">{{ item.key | translate }}</span>
             </a>
           </li>
@@ -138,4 +140,28 @@
   }
 
 </header>
+
+<!-- =========================================================================
+     Floating Bottom Navigation Dock (Always Floating from bottom, Image 2 style)
+     ========================================================================= -->
+<nav class="nexo-floating-dock" aria-label="Floating Primary Navigation">
+  <ul class="dock-items">
+    @for (item of navItems; track item.id) {
+      <li class="dock-item">
+        <a 
+          routerLink="/" 
+          [fragment]="item.id"
+          class="dock-link"
+          [class.dock-link--active]="activeSection() === item.id"
+          [attr.aria-current]="activeSection() === item.id ? 'page' : null"
+          (click)="onNavClick(item.id, $event)">
+          <span class="dock-icon-wrapper" aria-hidden="true">
+            <i [class]="item.faIcon"></i>
+          </span>
+          <span class="dock-label">{{ item.key | translate }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</nav>
 

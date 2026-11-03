@@ -18,6 +18,7 @@ export interface NavItem {
   id: string;
   key: string;
   fallbackLabel: string;
+  faIcon: string;
 }
 
 @Component({
@@ -33,11 +34,11 @@ export class NavbarComponent implements OnDestroy {
   private readonly router = inject(Router);
 
   readonly navItems: readonly NavItem[] = [
-    { id: 'home', key: 'NAV.HOME', fallbackLabel: 'Home' },
-    { id: 'products', key: 'NAV.PRODUCTS', fallbackLabel: 'Products' },
-    { id: 'about', key: 'NAV.ABOUT', fallbackLabel: 'About NexoGen' },
-    { id: 'why-nexogen', key: 'NAV.WHY_US', fallbackLabel: 'Our Approach' },
-    { id: 'contact', key: 'NAV.CONTACT', fallbackLabel: 'Contact' }
+    { id: 'home', key: 'NAV.HOME', fallbackLabel: 'Home', faIcon: 'fa-solid fa-house' },
+    { id: 'products', key: 'NAV.PRODUCTS', fallbackLabel: 'Products', faIcon: 'fa-solid fa-pills' },
+    { id: 'about', key: 'NAV.ABOUT', fallbackLabel: 'About NexoGen', faIcon: 'fa-solid fa-circle-info' },
+    { id: 'why-nexogen', key: 'NAV.WHY_US', fallbackLabel: 'Our Approach', faIcon: 'fa-solid fa-microscope' },
+    { id: 'contact', key: 'NAV.CONTACT', fallbackLabel: 'Contact', faIcon: 'fa-solid fa-envelope' }
   ];
 
   readonly isScrolled = signal<boolean>(false);
